@@ -6,7 +6,9 @@
 *.kra
 *.kra.meta
 *.ai.meta
+*.kra~
 
+StickGuy
 
 Library/
 
