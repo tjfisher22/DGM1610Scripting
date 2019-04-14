@@ -107,7 +107,7 @@ public class PlayerControl : MonoBehaviour {
 
 	bool IsGrounded() {
     	Vector2 position = transform.position;
-		float distance = 1.75f;
+		float distance = 2f;
     	Vector2 direction = new Vector2(0,-1*distance);
     	
     
