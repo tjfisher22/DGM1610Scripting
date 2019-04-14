@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour {
+	//reformat this so it only sends movement commands to unit control and animation stuff
+	//kinda like how it does right now with meleeAttacks
 
 	public Unit player;
 
@@ -14,6 +16,8 @@ public class PlayerControl : MonoBehaviour {
 	float sprintMod;
 
 	float rightDirect;
+	
+	public int currentHealth;
 		
 
 	// bool hasDoubleJump = false;
@@ -22,7 +26,7 @@ public class PlayerControl : MonoBehaviour {
 
 	private Animator playerAnim;
 	private Rigidbody2D playerBody;
-	private SpriteRenderer playerSprite;
+	//private SpriteRenderer playerSprite;
 	public LayerMask groundLayer;
 
 	// Use this for initialization
@@ -33,7 +37,7 @@ public class PlayerControl : MonoBehaviour {
 		jumpHeight = player.jumpHeight;
 		playerAnim = gameObject.GetComponent<Animator> ();
 		playerBody = gameObject.GetComponent<Rigidbody2D> ();
-		playerSprite = gameObject.GetComponent<SpriteRenderer> ();
+		//playerSprite = gameObject.GetComponent<SpriteRenderer> ();
 
 		rightDirect = transform.localScale.x;
 
@@ -43,7 +47,14 @@ public class PlayerControl : MonoBehaviour {
 	void Update () {
 		Walk();
 		Jump();
+		Attack();
 		
+	}
+
+	void Attack(){
+		if(Input.GetButtonDown("Melee")){
+			gameObject.GetComponent<MeleeAttacks>().MeleeAttack();
+		}
 	}
 
 	void Walk(){
@@ -74,22 +85,23 @@ public class PlayerControl : MonoBehaviour {
 
 		//Determine what animation to play
 		playerAnim.SetFloat("speed", Mathf.Abs(playerSpeed));
+
+		//change to mouse controls? and move slower backwards?
 		bool right = true;
 		if(playerSpeed<0&&right){ 
 			//playerSprite.flipX = true;
 			gameObject.transform.localScale = new Vector2(-rightDirect,transform.localScale.y);
 		 	right = false;
+	
 			
 		}
-		if(playerSpeed!=0) return;
-		else//(playerSpeed>0&&!right){ //I don't know why this didn't work with the conditions provided but addign the if makes it work
-		//nevermind
-			{
+		if(playerSpeed>0&&right){  //ok I have no clue why !right doesn't work but right does. Whatever
 			//playerSprite.flipX = false;
 			gameObject.transform.localScale = new Vector2(rightDirect,transform.localScale.y);
 			right = true;
-			
 		}
+		
+		
 		
 			
 
@@ -120,13 +132,14 @@ public class PlayerControl : MonoBehaviour {
 
 	//Jump() and IsGrounded() could be moved to another script to provide access to other entities potentially
 	void Jump(){
-		if(!IsGrounded()){return;}
+
 		float jump = Input.GetAxisRaw("Jump")*jumpHeight;
 		if(Input.GetButton("Jump")){
+			if(!IsGrounded()){return;}
 			playerBody.velocity = new Vector2(playerBody.velocity.x,jump);
 			//grounded=false;
 			//play jump animation here
-			playerAnim.Play("Jump");
+			//playerAnim.Play("Jump");
 		}
 
 	}
@@ -146,25 +159,4 @@ public class PlayerControl : MonoBehaviour {
     return false;
 	}
 
-	//combining in Walk() with 
-	// void Sneak (){
-	// 	float sneakSpeed = Input.GetAxisRaw("Sneak")*speed/2;
-	// 	if(sneakSpeed!=0){
-	// 		playerBody.velocity = new Vector2(sneakSpeed,playerBody.velocity.y);
-	// 		if(walkCycling==false){
-    //     		playerAnim.Play("Walk Cycle", 0, 0.6f);//change to sneak
-	// 			walkCycling = true;
-	// 		}
-	// 		else if(walkCycling)
-	// 			playerAnim.Play("Walk Cycle");//change to sneak
-	// 		if(moveSpeed<0)playerSprite.flipX = true;
-	// 		else playerSprite.flipX = false;
-	// 	}
-    // 	else {
-    // 		playerAnim.Play("Idle");
-	// 		walkCycling = false;
-	// 	}
-
-
-	// }
 }

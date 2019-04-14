@@ -7,21 +7,29 @@ public class MeleeAttacks : MonoBehaviour {
 	public Unit attacker;
 	public Weapon weapon; 
 
-	float timeToAttack;
+	public float timeToAttack;
 	public float attackCooldown;
 
 	public Transform attackReach;
 	public LayerMask enemyLayer;
 	[HideInInspector]public float attackSize;
+	public int damage;
+
+	private Animator attackerAnim;
+
+	public bool onCooldown;
 	
 	
-	float distance = 2f;
+	//float distance = 2f;
 	//public Vector2 direction = new Vector2(0,-1*distance);
-	Vector2 position;
+	public Vector2 position;
 
 	// Use this for initialization
 	void Start () {
 		attackCooldown = weapon.attackCooldown;
+		attackerAnim = gameObject.GetComponent<Animator> ();
+		attackSize = weapon.weaponSize;
+		onCooldown = false;
 		
 
     	
@@ -29,17 +37,34 @@ public class MeleeAttacks : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//position = gameObject.transform.position;
-		if(timeToAttack <=0){
-			if(Input.GetButtonDown("Melee")){
-				
-				//Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll
-			}
+		position = gameObject.transform.position;
 
-			timeToAttack = attackCooldown;
+	}
+
+	public void MeleeAttack(){
+		if(!onCooldown){
+				attackerAnim.SetTrigger("slash");
+				damage = weapon.damage + attacker.strength;
+				//since I'm going to use different sprites, this may be able to be replaced with onTriggerEnter?
+				Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackReach.position, attackSize, enemyLayer);
+				for (int i = 0; i< enemiesToDamage.Length; i++){
+					enemiesToDamage[i].GetComponent<UnitControl>().TakeDamage(damage);
+				}
+				StartCoroutine(Cooldown());
+				// timeToAttack = attackCooldown;			
 		}
 		else{
-			timeToAttack--;
+			//timeToAttack--;
 		}
 	}
+
+	private IEnumerator Cooldown(){
+		onCooldown = true;
+
+		yield return new WaitForSeconds(attackCooldown);
+
+		onCooldown = false;
+	}
+	
+
 }

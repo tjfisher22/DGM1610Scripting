@@ -9,7 +9,7 @@ public class Weapon : ScriptableObject {
 	
 	public Sprite weaponSprite;
 	
-	public float damage;
+	public int damage;
 	public float attackCooldown;
 
 	public float weaponSize;
