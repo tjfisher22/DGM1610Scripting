@@ -13,8 +13,10 @@ public class Unit : ScriptableObject {
 	public int strength;
 	public bool hostile = false;
 
-	public float speed;
-	public float jumpHeight;
+	public float speed = 10;
+	public float sprintModifier = 2;
+	public float sneakModifier = .5f;
+	public float jumpHeight = 10;
 
 	public Sprite unitSprite;
 

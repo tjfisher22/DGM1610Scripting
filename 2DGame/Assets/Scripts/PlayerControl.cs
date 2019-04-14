@@ -6,14 +6,19 @@ public class PlayerControl : MonoBehaviour {
 
 	public Unit player;
 
-	public float jumpHeight;
-	public float speed;
-	
-	
+
+
+	float jumpHeight;
+	float speed;
+	float sneakMod;
+	float sprintMod;
+
+	float rightDirect;
+		
 
 	// bool hasDoubleJump = false;
 	//bool grounded = false;
-	bool walkCycling = false;
+
 
 	private Animator playerAnim;
 	private Rigidbody2D playerBody;
@@ -23,10 +28,14 @@ public class PlayerControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		speed = player.speed;
+		sneakMod = player.sneakModifier;
+		sprintMod = player.sprintModifier;
 		jumpHeight = player.jumpHeight;
 		playerAnim = gameObject.GetComponent<Animator> ();
 		playerBody = gameObject.GetComponent<Rigidbody2D> ();
 		playerSprite = gameObject.GetComponent<SpriteRenderer> ();
+
+		rightDirect = transform.localScale.x;
 
 	}
 	
@@ -39,11 +48,11 @@ public class PlayerControl : MonoBehaviour {
 
 	void Walk(){
 		float moveSpeed = Input.GetAxis("Horizontal")*speed;
-		float sneakSpeed = moveSpeed/2;
-		float sprintSpeed = moveSpeed*1.5f;
+		float sneakSpeed = moveSpeed*sneakMod;
+		float sprintSpeed = moveSpeed*sprintMod;
 		float playerSpeed;
 
-		string cycleType;
+
 
 		//apparently switch statments don't work with inputs so ifelse it is
 		//Determine which movement speed and animation cycle should be applied
@@ -51,23 +60,38 @@ public class PlayerControl : MonoBehaviour {
 										//as in when pressing ctrl + D to sneak right, unity thinks you're trying to dupllicate the object
 										//Works with the alternate mouse3 though
 			playerSpeed = sneakSpeed;
-			//cycleType = "Sneak Cycle";
-			cycleType = "Walk Cycle";
-			Debug.Log(sneakSpeed + " " + moveSpeed);
+
 		}
 		else if(Input.GetButton("Sprint")){
 			playerSpeed = sprintSpeed;
-			//cycleType = "Sprint Cycle";
-			cycleType = "Walk Cycle";
 		}
 		else {
 			playerSpeed = moveSpeed;
-			cycleType = "Walk Cycle";
 		}
 
 		//Move the player
 		playerBody.velocity = new Vector2(playerSpeed,playerBody.velocity.y);
 
+		//Determine what animation to play
+		playerAnim.SetFloat("speed", Mathf.Abs(playerSpeed));
+		bool right = true;
+		if(playerSpeed<0&&right){ 
+			//playerSprite.flipX = true;
+			gameObject.transform.localScale = new Vector2(-rightDirect,transform.localScale.y);
+		 	right = false;
+			
+		}
+		if(playerSpeed!=0) return;
+		else//(playerSpeed>0&&!right){ //I don't know why this didn't work with the conditions provided but addign the if makes it work
+		//nevermind
+			{
+			//playerSprite.flipX = false;
+			gameObject.transform.localScale = new Vector2(rightDirect,transform.localScale.y);
+			right = true;
+			
+		}
+		
+			
 
 
 
@@ -75,22 +99,24 @@ public class PlayerControl : MonoBehaviour {
 
 
 		//Should animations be moved to their own script?
+		//No, because it can all be done in the animator controller!!! :)
 		
-		if (moveSpeed!=0) { // doesn't account for deadzones on controller but should be fine for now //also, you can change zones in input manager?
-			if(walkCycling==false){
-        		playerAnim.Play(cycleType, 0, 0.6f);//could use gamepad values to change speed but not needed for this class
-				walkCycling = true;
-			}
-			else if(walkCycling)
-				playerAnim.Play(cycleType);
-			if(moveSpeed<0)playerSprite.flipX = true;
-			else playerSprite.flipX = false;
-		}
-    	else {
-    		playerAnim.Play("Idle");
-			walkCycling = false;
-		}
-	}
+	// 	if (moveSpeed!=0) { // doesn't account for deadzones on controller but should be fine for now //also, you can change zones in input manager?
+	// 		if(walkCycling==false){
+    //     		playerAnim.Play(cycleType, 0, 0.6f);//could use gamepad values to change speed but not needed for this class
+	// 			walkCycling = true;
+	// 		}
+	// 		else if(walkCycling)
+	// 			playerAnim.Play(cycleType);
+
+	// 	} 
+    // 	else {
+	// 		if(!jumping){
+    // 			playerAnim.Play("Idle");
+	// 			walkCycling = false;
+	// 		}
+	// 	}
+}
 
 	//Jump() and IsGrounded() could be moved to another script to provide access to other entities potentially
 	void Jump(){
@@ -100,7 +126,7 @@ public class PlayerControl : MonoBehaviour {
 			playerBody.velocity = new Vector2(playerBody.velocity.x,jump);
 			//grounded=false;
 			//play jump animation here
-			//playerAnim.Play("Jump");
+			playerAnim.Play("Jump");
 		}
 
 	}
