@@ -20,5 +20,7 @@ public class Unit : ScriptableObject {
 
 	public Sprite unitSprite;
 
+	//figure out if you can save animator controllers to SOs
+
 	
 }
