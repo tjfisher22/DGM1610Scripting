@@ -17,7 +17,7 @@ public class PlayerControl : MonoBehaviour {
 
 	float rightDirect;
 	
-	public int currentHealth;
+	public FloatVariable currentHealth;
 		
 
 	// bool hasDoubleJump = false;
@@ -35,9 +35,11 @@ public class PlayerControl : MonoBehaviour {
 		sneakMod = player.sneakModifier;
 		sprintMod = player.sprintModifier;
 		jumpHeight = player.jumpHeight;
+		//currentHealth = player.maxHealth;
 		playerAnim = gameObject.GetComponent<Animator> ();
 		playerBody = gameObject.GetComponent<Rigidbody2D> ();
 		//playerSprite = gameObject.GetComponent<SpriteRenderer> ();
+
 
 		rightDirect = transform.localScale.x;
 
@@ -58,7 +60,7 @@ public class PlayerControl : MonoBehaviour {
 	}
 
 	void Walk(){
-		float moveSpeed = Input.GetAxis("Horizontal")*speed;
+		float moveSpeed = Input.GetAxisRaw("Horizontal")*speed;
 		float sneakSpeed = moveSpeed*sneakMod;
 		float sprintSpeed = moveSpeed*sprintMod;
 		float playerSpeed;

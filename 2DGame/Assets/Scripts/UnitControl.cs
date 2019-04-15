@@ -14,6 +14,10 @@ public class UnitControl : MonoBehaviour {
 	float sprintMod;
 
 	float rightDirect;
+
+	float movementInputValue;
+	bool sneakInput;
+	bool sprintInput;
 		
 
 	// bool hasDoubleJump = false;
@@ -22,47 +26,60 @@ public class UnitControl : MonoBehaviour {
 
 	private Animator unitAnim;
 	private Rigidbody2D unitBody;
-	//private SpriteRenderer unitSprite;
+	private SpriteRenderer unitSprite;
 	public LayerMask groundLayer;
 
 	// Use this for initialization
 	void Start () {
+		
 		currentHealth = unit.maxHealth;
 		speed = unit.speed;
 		sneakMod = unit.sneakModifier;
 		sprintMod = unit.sprintModifier;
-		jumpHeight = unit.jumpHeight;
+		// jumpHeight = unit.jumpHeight;
+		//putting these in start limits their usefullness as SOs
+
+
 		unitAnim = gameObject.GetComponent<Animator> ();
 		unitBody = gameObject.GetComponent<Rigidbody2D> ();
-		//unitSprite = gameObject.GetComponent<SpriteRenderer> ();
+		unitSprite = gameObject.GetComponent<SpriteRenderer> ();
 
+		unitSprite.color = unit.unitColor;
+		Debug.Log(unit.unitColor);
 		rightDirect = transform.localScale.x;
 
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		//Walk();
-		//Jump();
+	void FixedUpdate () {
+		Walk();
 		
 	}
 
 	public void TakeDamage(int damage){
 		currentHealth -= damage;
+		if(currentHealth <=0){
+			//this.gameObject.SetActive(false);
+		}
 	}
+	public void Control(float unitMovement, bool sneak, bool sprint){
+		movementInputValue = unitMovement;
+		sneakInput = sneak;
+		sprintInput = sprint;
 
+	}
 	void Walk(){
-		float moveSpeed = Input.GetAxis("Horizontal")*speed;
+		float moveSpeed = movementInputValue*speed;
 		float sneakSpeed = moveSpeed*sneakMod;
 		float sprintSpeed = moveSpeed*sprintMod;
 		float unitSpeed;
 
 		//Determine which movement speed and animation cycle should be applied
-		if(Input.GetButton("Sneak")){ 
+		if(sneakInput){ 
 			unitSpeed = sneakSpeed;
 
 		}
-		else if(Input.GetButton("Sprint")){
+		else if(sprintInput){
 			unitSpeed = sprintSpeed;
 		}
 		else {
@@ -92,16 +109,13 @@ public class UnitControl : MonoBehaviour {
 	}
 
 	//Jump() and IsGrounded() could be moved to another script to provide access to other entities potentially
-	void Jump(){
-
-		float jump = Input.GetAxisRaw("Jump")*jumpHeight;
-		if(Input.GetButton("Jump")){
+	public void Jump(){
+		float jump = unit.jumpHeight;
 			if(!IsGrounded()){return;}
 			unitBody.velocity = new Vector2(unitBody.velocity.x,jump);
 			//grounded=false;
 			//play jump animation here
 			//unitAnim.Play("Jump");
-		}
 
 	}
 

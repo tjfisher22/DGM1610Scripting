@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Unit", menuName = "Unit")]
-public class Unit : ScriptableObject {
+
+public abstract class Unit : ScriptableObject {
+
+	//public virtual void Initialize(UnitAI unit){}
+	public abstract void Think(UnitAI unit);
+
 
 	public new string name;
 
 	public int maxHealth;
-	//Not smart to store here, have current health built into prefabs of units
+	//Not smart to store here, have current health built into floatvars and prefabs
 	//public int currentHealth;
 	public int strength;
 	public bool hostile = false;
@@ -20,7 +24,10 @@ public class Unit : ScriptableObject {
 
 	public Sprite unitSprite;
 
+	public Color unitColor;
+
 	//figure out if you can save animator controllers to SOs
+
 
 	
 }
