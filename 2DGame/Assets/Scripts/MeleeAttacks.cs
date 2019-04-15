@@ -37,7 +37,7 @@ public class MeleeAttacks : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		position = gameObject.transform.position;
+		
 
 	}
 
