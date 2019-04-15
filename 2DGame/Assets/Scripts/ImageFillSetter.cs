@@ -10,7 +10,6 @@ public class ImageFillSetter : MonoBehaviour {
 
 
 	void Update () {
-
 		image.fillAmount = Mathf.Clamp01(variable.value/max.value);
 	}
 }

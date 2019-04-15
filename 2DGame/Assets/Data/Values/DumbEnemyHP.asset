@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ccbb6530cf43cc42a636524a93f03d6, type: 3}
-  m_Name: PlayerMaxHP
+  m_Name: DumbEnemyHP
   m_EditorClassIdentifier: 
-  description: Player's Max HP
-  value: 100
+  description: Need to change this so values aren't shared across all enemies
+  value: 10

@@ -5,8 +5,9 @@ using UnityEngine;
 public class UnitControl : MonoBehaviour {
 
 	public Unit unit;
+	public FloatVariable currentHP;
 
-	public int currentHealth;
+	//public int currentHealth;
 	
 	float jumpHeight;
 	float speed;
@@ -36,7 +37,7 @@ public class UnitControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		currentHealth = unit.maxHealth;
+		// currentHealth = unit.maxHealth;
 		speed = unit.speed;
 		sneakMod = unit.sneakModifier;
 		sprintMod = unit.sprintModifier;
@@ -75,10 +76,13 @@ public class UnitControl : MonoBehaviour {
 	}
 
 	public void TakeDamage(int damage){
-		currentHealth -= damage;
-		Debug.Log(damage + "Shot");
-		if(currentHealth <=0){
-			//this.gameObject.SetActive(false);
+		float dmg = (float)damage;
+		currentHP.value -= dmg;
+
+		if(currentHP.value <=0){
+			currentHP.value = 0;
+			Debug.Log(unit.name+" Died");
+			this.gameObject.SetActive(false);
 		}
 	}
 	public void Control(float unitMovement, bool sneak, bool sprint){
