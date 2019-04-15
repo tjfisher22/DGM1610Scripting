@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94347daf1c3415946a71d855c423f034, type: 3}
   m_Name: DumbEnemy
   m_EditorClassIdentifier: 
-  name: 
+  name: First Enemy
   maxHealth: 50
   strength: 10
   hostile: 0
