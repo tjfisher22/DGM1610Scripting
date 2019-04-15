@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New player", menuName = "Player Unit")]
+[CreateAssetMenu(fileName = "New Player", menuName = "Unit/Player Unit")]
 public class PlayerUnit : Unit {
 
 	public int playerNumber;

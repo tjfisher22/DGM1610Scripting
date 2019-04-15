@@ -18,16 +18,20 @@ public class UnitControl : MonoBehaviour {
 	float movementInputValue;
 	bool sneakInput;
 	bool sprintInput;
+
+	
 		
 
 	// bool hasDoubleJump = false;
 	//bool grounded = false;
+	public bool nearEdge;
 
 
 	private Animator unitAnim;
 	private Rigidbody2D unitBody;
 	private SpriteRenderer unitSprite;
 	public LayerMask groundLayer;
+	public Transform edgeCheck;
 
 	// Use this for initialization
 	void Start () {
@@ -50,14 +54,29 @@ public class UnitControl : MonoBehaviour {
 
 	}
 	
-	// Update is called once per frame
+
 	void FixedUpdate () {
 		Walk();
+		//EdgeCheck(.2f);//should this be in normal update()
 		
+	}
+
+	public bool IsEdge(float speed){
+		//use speed to modify sphere radius
+		Collider2D[] platformColliders = Physics2D.OverlapCircleAll(edgeCheck.position, .5f, groundLayer);
+		if(platformColliders.Length == 0){
+			Debug.Log("Edge Detected");
+			return true;
+		}
+		else return false;
+
+
+
 	}
 
 	public void TakeDamage(int damage){
 		currentHealth -= damage;
+		Debug.Log(damage + "Shot");
 		if(currentHealth <=0){
 			//this.gameObject.SetActive(false);
 		}

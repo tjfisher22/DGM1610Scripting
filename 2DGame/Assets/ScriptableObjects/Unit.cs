@@ -24,7 +24,7 @@ public abstract class Unit : ScriptableObject {
 
 	public Sprite unitSprite;
 
-	public Color unitColor;
+	public Color unitColor = Color.black;
 
 	//figure out if you can save animator controllers to SOs
 
