@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour {
 
+	public FloatVariable enemyHPs;
+	public FloatVariable enemyNum;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -11,18 +14,25 @@ public class EnemyManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		SpawnEnemy();
 		
 	}
 
 	void SpawnEnemy () {
+		if(Input.GetButtonDown("Melee")){
+			enemyHPs.listValue.add(2f);
+		}
+		
 
 	}
 
-	void DropCollectables () {
+	//Should probably move spawn enemy to seperate class for
+	//code management but it'll be small enough for this project
+	void DropCollectables (GameObject enemy, SpawnRates rates ) {
 
 	}
 
-	void KillEnemy () {
+	void KillEnemy (GameObject enemy, int damage, int enemyNumber) {
 		
 	}
 }
