@@ -15,7 +15,7 @@ MonoBehaviour:
   maxHealth: 50
   strength: 10
   hostile: 0
-  speed: 2
+  speed: 5
   sprintModifier: 2
   sneakModifier: 0.5
   jumpHeight: 15

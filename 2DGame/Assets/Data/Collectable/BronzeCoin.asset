@@ -11,8 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c27d908fc125b46b8261d390fcbf44, type: 3}
   m_Name: BronzeCoin
   m_EditorClassIdentifier: 
-  Name: BronzeCoin
-  Sprite: {fileID: 0}
-  Amount: 1
+  name: Bronze Coin
+  sprite: {fileID: 21300000, guid: 388a62efc619725488d8c995a00679e8, type: 3}
+  amount: 0
   type: 0
+  color: {r: 0.6666667, g: 0.38431376, b: 0.13725491, a: 1}
   coinValue: 1
