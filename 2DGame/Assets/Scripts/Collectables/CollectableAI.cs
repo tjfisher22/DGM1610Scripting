@@ -13,5 +13,7 @@ public class CollectableAI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		pickUp.Collect(this);
+
 	}
+
 }

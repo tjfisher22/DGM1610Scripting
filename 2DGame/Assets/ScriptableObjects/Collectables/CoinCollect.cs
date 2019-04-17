@@ -6,12 +6,23 @@ using UnityEngine;
 public class CoinCollect : Collectables {
 	public int coinValue;
 
+
+
 	// Put spawning in collectableManager
 	// public override void Spawn(CollectableAI Collect){
 
 	// }
 	public override void Collect(CollectableAI pickUp){
-			pickUp.GetComponent<CollectableControl>().Collect(pickUp);
+			pickUp.GetComponent<CollectableControl>().CollectValues(coinValue*amount);
+
+			//put collectable specific stuff here
+			//Like add powerups, add to score.
+			//They will functions to call from CollectableControl I believe
+			//Nah, just pass important values into Collect()
+			//Or is that too much info for the class
+			//Keep it here if possible
+			//NOPE
+			//Send the important stuff 
 
 	}
 
