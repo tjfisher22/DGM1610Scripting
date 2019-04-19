@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New List", menuName = "Variable/List")]
+
+// [System.Serializable]
 public  class ListVariable<T> : ScriptableObject {
 
 	public string description;
