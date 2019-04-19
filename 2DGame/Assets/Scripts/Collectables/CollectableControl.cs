@@ -5,7 +5,7 @@ using UnityEngine;
 public class CollectableControl : MonoBehaviour {
 	public bool pickedUp;
 	public Collectables pickUp;
-	public FloatVariable PlayerCollectables; //Get a better name for this
+	public ListVariable<Collectables> PlayerCollectables; //Get a better name for this 
 	[HideInInspector]
 	public int CollectableValue;
 	private SpriteRenderer collectSprite;
@@ -55,7 +55,7 @@ public class CollectableControl : MonoBehaviour {
 
 		switch(pickUp.type){
 			case Collectables.CollectableType.Coin:
-				PlayerCollectables.value += CollectableValue;
+				//PlayerCollectables.value += CollectableValue;
 				break;
 			case Collectables.CollectableType.Arrow:
 				//Make an array of floatvariables for different arrow types

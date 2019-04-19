@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour {
+	//unused
+
+
+
+
+
+
+
 	//reformat this so it only sends movement commands to unit control and animation stuff
 	//kinda like how it does right now with meleeAttacks
 
@@ -17,7 +25,7 @@ public class PlayerControl : MonoBehaviour {
 
 	float rightDirect;
 	
-	public FloatVariable currentHealth;
+	//public FloatVariable currentHealth;
 		
 
 	// bool hasDoubleJump = false;

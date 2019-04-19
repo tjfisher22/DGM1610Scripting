@@ -39,9 +39,18 @@ public class SpawnRates : ScriptableObject {
 
 	// 	CollectableData test = new CollectableData();
 	// }
-	public Collectables[] items = new Collectables[3];
-	public float[] spawnRate= new float[3];
-	public int[] number= new int[3];
+
+
+	// public Collectables[] items = new Collectables[3];
+	// public float[] spawnRate= new float[3];
+	// public int[] number= new int[3];
+
+
+// lists not showing in inspector
+
+	public ListVariable<Collectables> items;
+	public ListVariable<float> rates;
+	public ListVariable<int> number;
 
 
 // 	//public List<List<Collectables>> colList = new List<List<Collectables>>();

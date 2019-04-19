@@ -20,7 +20,7 @@ public class EnemyManager : MonoBehaviour {
 
 	void SpawnEnemy () {
 		if(Input.GetButtonDown("Melee")){
-			enemyHPs.listValue.add(2f);
+			//enemyHPs.listValue.add(2f);
 		}
 		
 

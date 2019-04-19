@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Collectables : ScriptableObject {
-	public enum CollectableType {Coin, Arrow, PowerUp, Potion};
+	public enum CollectableType {Coin, Arrow, PowerUp, Potion};//not readily expandable //Scriptable object would be better but required for the assignment
 
 	public string name = "New Collectable";
 	public Sprite sprite;
