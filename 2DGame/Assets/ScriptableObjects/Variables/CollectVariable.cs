@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New List", menuName = "Variable/List")]
-public class CollectVariable : ListVariable<Collectables> {
-
-
+[CreateAssetMenu(fileName = "New List", menuName = "Variable/Spawn Rate")]
+public class CollectVariable : ListVariable<Collectables,float> {
 }

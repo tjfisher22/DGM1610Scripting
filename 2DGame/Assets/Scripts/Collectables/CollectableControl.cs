@@ -5,7 +5,7 @@ using UnityEngine;
 public class CollectableControl : MonoBehaviour {
 	public bool pickedUp;
 	public Collectables pickUp;
-	public ListVariable<Collectables> PlayerCollectables; //Get a better name for this 
+	public CollectVariable PlayerCollectables; //Get a better name for this 
 	[HideInInspector]
 	public int CollectableValue;
 	private SpriteRenderer collectSprite;

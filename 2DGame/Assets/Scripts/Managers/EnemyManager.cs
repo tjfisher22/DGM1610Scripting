@@ -4,23 +4,34 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour {
 
-	public FloatVariable enemyHPs;
-	public FloatVariable enemyNum;
+	public HPListVariable enemyHPs;
+	public Transform enemyPrefab;
+	public int enemyNumber;
+
 
 	// Use this for initialization
 	void Start () {
+		enemyHPs.listValue.Clear();
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		SpawnEnemy();
+		SpawnEnemy(new Vector2(0,10));
 		
 	}
 
-	void SpawnEnemy () {
-		if(Input.GetButtonDown("Melee")){
-			//enemyHPs.listValue.add(2f);
+	void SpawnEnemy (Vector2 position) {
+		if(Input.GetButtonDown("Jump")){
+			GameObject obj;
+			obj = Instantiate(enemyPrefab, position, Quaternion.identity).gameObject;
+			//Debug.Log(obj);
+			enemyHPs.listValue.Add(enemyPrefab.gameObject.GetComponent<UnitControl>().unit.maxHealth);
+			obj.GetComponent<UnitControl>().unitID = enemyNumber;
+			enemyNumber++;
+			
+			//create list of transforms with new objects put in
+
 		}
 		
 
@@ -28,11 +39,11 @@ public class EnemyManager : MonoBehaviour {
 
 	//Should probably move spawn enemy to seperate class for
 	//code management but it'll be small enough for this project
-	void DropCollectables (GameObject enemy, SpawnRates rates ) {
-
+	void DropCollectables (GameObject enemy, CollectVariable rates ) {
+		
 	}
 
-	void KillEnemy (GameObject enemy, int damage, int enemyNumber) {
+	void DamageEnemy (GameObject enemy, int damage, int enemyNumber) {
 		
 	}
 }

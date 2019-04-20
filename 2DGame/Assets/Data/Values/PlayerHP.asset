@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: PlayerHP
   m_EditorClassIdentifier: 
   description: Player's current health
-  value: 45
+  value: 100

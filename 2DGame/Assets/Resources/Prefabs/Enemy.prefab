@@ -22,7 +22,7 @@ GameObject:
   m_Layer: 9
   m_Name: GroundCheck
   m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -96,8 +96,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1544600761062486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.85, y: 2.12, z: -5.365773}
-  m_LocalScale: {x: -0.2749802, y: 0.27498022, z: 0.27498022}
+  m_LocalPosition: {x: 2.01, y: 9.01, z: -5.365773}
+  m_LocalScale: {x: 0.2749802, y: 0.27498022, z: 0.27498022}
   m_Children:
   - {fileID: 4274751967592380}
   - {fileID: 4416809457126066}
@@ -202,10 +202,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 11400000, guid: 6f59f3db11a48f94ca4e97424ab1d559, type: 2}
-  currentHealth: 0
+  currentHP: {fileID: 0}
+  nearEdge: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  edgeCheck: {fileID: 4416809457126066}
 --- !u!114 &114917239568478652
 MonoBehaviour:
   m_ObjectHideFlags: 1

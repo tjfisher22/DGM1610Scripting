@@ -8,8 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ccbb6530cf43cc42a636524a93f03d6, type: 3}
-  m_Name: DumbEnemyHP
+  m_Script: {fileID: 11500000, guid: c12e87dbda0edc04b8c7c7632dc23e13, type: 3}
+  m_Name: EnemyHP
   m_EditorClassIdentifier: 
-  description: Need to change this so values aren't shared across all enemies
-  value: 10
+  description: List of Enemy HPs
+  value: 0
+  listValue:
+  - 2

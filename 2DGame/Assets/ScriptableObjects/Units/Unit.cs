@@ -7,6 +7,8 @@ public abstract class Unit : ScriptableObject {
 
 	//public virtual void Initialize(UnitAI unit){}
 	public abstract void Think(UnitAI unit);
+	
+
 
 
 	public new string name;

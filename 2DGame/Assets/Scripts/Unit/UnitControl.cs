@@ -5,11 +5,13 @@ using UnityEngine;
 public class UnitControl : MonoBehaviour {
 
 	public Unit unit;
+	public int unitID;
+
 	public FloatVariable currentHP;
 
 	//public int currentHealth;
 	
-	float jumpHeight;
+	//float jumpHeight;
 	float speed;
 	float sneakMod;
 	float sprintMod;
@@ -75,14 +77,21 @@ public class UnitControl : MonoBehaviour {
 
 	}
 
-	public void TakeDamage(int damage){
-		float dmg = (float)damage;
-		currentHP.value -= dmg;
+	public void TakeDamage(int damage){//This should probably get moved to a manager, because right now it passes from MeleeAttacks to Enemy Manager
+										//but becasue I have this backed into the player I'd also have to create a manager for the player
+										//If I have time I'll change it up. For now, this should do.
+		if(currentHP!= null){
+			float dmg = (float)damage;
+			currentHP.value -= dmg;
 
-		if(currentHP.value <=0){
-			currentHP.value = 0;
-			Debug.Log(unit.name+" Died");
-			this.gameObject.SetActive(false);
+			if(currentHP.value <=0){
+				currentHP.value = 0;
+				Debug.Log(unit.name+" Died");
+				this.gameObject.SetActive(false);
+			}
+		}
+		else{
+			
 		}
 	}
 	public void Control(float unitMovement, bool sneak, bool sprint){
@@ -117,14 +126,14 @@ public class UnitControl : MonoBehaviour {
 
 		//change to mouse controls? and move slower backwards?
 		bool right = true;
-		if(unitSpeed<0&&right){ 
+		if(unitSpeed<0){ 
 			//unitSprite.flipX = true;
 			gameObject.transform.localScale = new Vector2(-rightDirect,transform.localScale.y);
 		 	right = false;
 	
 			
 		}
-		if(unitSpeed>0&&right){  //ok I have no clue why !right doesn't work but right does. Whatever
+		if(unitSpeed>0){  //ok I have no clue why !right doesn't work but right does. Whatever
 			//unitSprite.flipX = false;
 			gameObject.transform.localScale = new Vector2(rightDirect,transform.localScale.y);
 			right = true;

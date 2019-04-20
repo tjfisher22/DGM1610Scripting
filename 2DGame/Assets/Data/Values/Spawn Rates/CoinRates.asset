@@ -11,6 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703575b4e0b9cb0498866af246b60c31, type: 3}
   m_Name: CoinRates
   m_EditorClassIdentifier: 
-  description: 
+  description: Basic Coin Spawns
   value: 0
-  listValue: []
+  listValue:
+  - {fileID: 11400000, guid: 4e6c1bb6d7dc3074a8af96517bb7fbf0, type: 2}
+  - {fileID: 11400000, guid: c327d7f344a0b1c4ab79141dae04f56e, type: 2}
+  - {fileID: 11400000, guid: 3ed194609739dc645a9912636682d756, type: 2}
+  listValue2:
+  - 0
+  - 0
+  - 0
