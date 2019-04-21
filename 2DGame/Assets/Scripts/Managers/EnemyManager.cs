@@ -9,7 +9,8 @@ public class EnemyManager : MonoBehaviour {
 	public Transform enemyPrefab;
 	public Transform collectPrefab;
 
-	private CollectVariable drops;
+	private int toSpawnID;
+	private CollectListVariable drops;
 	private List<GameObject> objList = new List<GameObject>();
 	private int enemyNumber;
 	
@@ -51,19 +52,38 @@ public class EnemyManager : MonoBehaviour {
 	//code management but it'll be small enough for this project
 	void DropCollectables (GameObject enemy) {
 		Transform pickUp;
+		bool spawning = true;
+		int spawnCount = 0;
+		float rng;
+		Vector2 spawnPoint;
 		drops = enemy.GetComponent<UnitControl>().collectsToDrop;
 		for(int i = 0; i<drops.listValue.Count; i++){
-			Debug.Log(drops.listValue[i]);
-			pickUp = Instantiate(collectPrefab, enemy.transform.position, enemy.transform.rotation);
+			while(spawning){
+				rng = Random.Range(0.0f,1.0f);
+				//Debug.Log(drops.listValue[i] + "Random num:" + rng + "Chance" + (drops.listValue2[i]-spawnCount));
+				
+				if(rng<drops.listValue2[i]-spawnCount){
+					spawnPoint = new Vector2(enemy.transform.position.x+rng, enemy.transform.position.y+rng);
+					pickUp = Instantiate(collectPrefab, spawnPoint, enemy.transform.rotation);
+					toSpawnID = pickUp.GetComponent<CollectableControl>().possiblePickUps.listValue.IndexOf(drops.listValue[i]);
+					pickUp.GetComponent<CollectableControl>().pickUpID = toSpawnID;
+					spawnCount++;
+					if(spawnCount>drops.listValue2[i]) spawning = false;
+				}
+				else spawning = false;
+			}
+			spawning = true;
+			spawnCount = 0;
 		}
-		//pickUp.GetComponent<UnitControl>()
+		
 
 		
 	}
+	
 
 	void KillEnemy () {
 		GameObject deadObj;
-        for (int i = enemyHPs.listValue.Count - 1; i >=0 ; i--){
+        for (int i = enemyHPs.listValue.Count - 1; i >=0 ; i--){//This might be better as a call from unitControl, to keep the loops down but this keeps it more OOP so???
 			if(enemyHPs.listValue[i] == 0){
 				if(objList[i]!=null){
 					deadObj = objList[i];

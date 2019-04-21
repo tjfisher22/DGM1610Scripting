@@ -73,7 +73,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1310014448858032}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 11a6bc2cfda347b42b7047d1655c2f16, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -120,7 +120,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickedUp: 0
   pickUp: {fileID: 11400000, guid: 4e6c1bb6d7dc3074a8af96517bb7fbf0, type: 2}
-  PlayerCollectables: {fileID: 11400000, guid: 2f56192a7dacdc24c8645fa5c0fe2257, type: 2}
+  pickUpID: 0
+  PlayerCollectables: {fileID: 0}
+  possiblePickUps: {fileID: 11400000, guid: 886b9703a26fc9140b873fdf12b3bdee, type: 2}
   CollectableValue: 0
 --- !u!212 &212283399148725166
 SpriteRenderer:

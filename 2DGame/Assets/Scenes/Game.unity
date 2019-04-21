@@ -156,8 +156,8 @@ MonoBehaviour:
   enemyHPs: {fileID: 11400000, guid: f6d7c65932946754cb569a165fe4c637, type: 2}
   enemyPrefab: {fileID: 4900701957240700, guid: 08fcda27c0027e0478de6b269d786daf,
     type: 2}
-  objList: []
-  enemyNumber: 0
+  collectPrefab: {fileID: 4660083409022234, guid: c02dc0c137bf1264e8c5307c6f400b44,
+    type: 2}
 --- !u!1 &399461300
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +618,7 @@ MonoBehaviour:
   unit: {fileID: 11400000, guid: 1ed82319c03cd274fbbc22bb96cac93d, type: 2}
   unitID: 0
   currentHP: {fileID: 11400000, guid: dd867da645e1591439a90448a4bf6d8f, type: 2}
+  collectsToDrop: {fileID: 0}
   nearEdge: 0
   groundLayer:
     serializedVersion: 2

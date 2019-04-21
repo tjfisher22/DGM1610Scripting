@@ -5,7 +5,9 @@ using UnityEngine;
 public class CollectableControl : MonoBehaviour {
 	public bool pickedUp;
 	public Collectables pickUp;
-	public CollectVariable PlayerCollectables; //Get a better name for this 
+	public int pickUpID;
+	public CollectListVariable PlayerCollectables; //Get a better name for this 
+	public CollectListVariable possiblePickUps; //this should probably be a dictionary for quicker look up times
 	[HideInInspector]
 	public int CollectableValue;
 	private SpriteRenderer collectSprite;
@@ -13,6 +15,7 @@ public class CollectableControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		pickUp = possiblePickUps.listValue[pickUpID];
 		//set up the sprite for the object
 		//This might be better in collectableManager
 		collectSprite = gameObject.GetComponent<SpriteRenderer> ();
@@ -25,6 +28,7 @@ public class CollectableControl : MonoBehaviour {
 	void Update () {
 		
 	}
+
 
 	public void CollectValues(int value){
 		
@@ -65,7 +69,7 @@ public class CollectableControl : MonoBehaviour {
 				break;
 		}
 
-		Debug.Log("Destroy Up");
+
 		Destroy(gameObject);
 
 

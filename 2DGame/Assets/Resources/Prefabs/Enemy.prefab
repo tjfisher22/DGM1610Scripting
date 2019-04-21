@@ -204,6 +204,7 @@ MonoBehaviour:
   unit: {fileID: 11400000, guid: 6f59f3db11a48f94ca4e97424ab1d559, type: 2}
   unitID: 0
   currentHP: {fileID: 11400000, guid: f6d7c65932946754cb569a165fe4c637, type: 2}
+  collectsToDrop: {fileID: 11400000, guid: 68b2183375d2ec44db3403eb1c1e745c, type: 2}
   nearEdge: 0
   groundLayer:
     serializedVersion: 2

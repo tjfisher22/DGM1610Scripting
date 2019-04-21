@@ -8,7 +8,7 @@ public class UnitControl : MonoBehaviour {
 	public int unitID;
 
 	public HPListVariable currentHP;
-	public CollectVariable collectsToDrop;
+	public CollectListVariable collectsToDrop;
 
 	//public int currentHealth;
 	
