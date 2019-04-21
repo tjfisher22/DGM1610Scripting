@@ -50,8 +50,13 @@ public class EnemyManager : MonoBehaviour {
 	//Should probably move spawn enemy to seperate class for
 	//code management but it'll be small enough for this project
 	void DropCollectables (GameObject enemy) {
+		Transform pickUp;
 		drops = enemy.GetComponent<UnitControl>().collectsToDrop;
-		
+		for(int i = 0; i<drops.listValue.Count; i++){
+			Debug.Log(drops.listValue[i]);
+			pickUp = Instantiate(collectPrefab, enemy.transform.position, enemy.transform.rotation);
+		}
+		//pickUp.GetComponent<UnitControl>()
 
 		
 	}
@@ -60,12 +65,13 @@ public class EnemyManager : MonoBehaviour {
 		GameObject deadObj;
         for (int i = enemyHPs.listValue.Count - 1; i >=0 ; i--){
 			if(enemyHPs.listValue[i] == 0){
-				Debug.Log("i is" + i);
-				deadObj = objList[i];
-				DropCollectables(deadObj);
-				Destroy(deadObj);
-				//objList.Remove(deadObj);
-				// return i;
+				if(objList[i]!=null){
+					deadObj = objList[i];
+					DropCollectables(deadObj);
+					Destroy(deadObj);
+					//objList.Remove(deadObj);
+					// return i;
+				}
 			}
 		}
 	}

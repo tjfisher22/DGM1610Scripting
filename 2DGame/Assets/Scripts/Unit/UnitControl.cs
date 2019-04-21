@@ -84,7 +84,7 @@ public class UnitControl : MonoBehaviour {
 		if(currentHP!= null){
 			float dmg = (float)damage;
 			currentHP.listValue[unitID] -= ((dmg>unit.defense) ? dmg-unit.defense:0);
-			Debug.Log(dmg-unit.defense);
+
 
 
 			if(currentHP.listValue[unitID] <=0){
