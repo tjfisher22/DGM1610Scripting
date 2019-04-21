@@ -185,7 +185,7 @@ MonoBehaviour:
   attackReach: {fileID: 4274751967592380}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   attackSize: 0
   damage: 0
   onCooldown: 0
@@ -202,7 +202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 11400000, guid: 6f59f3db11a48f94ca4e97424ab1d559, type: 2}
-  currentHP: {fileID: 0}
+  unitID: 0
+  currentHP: {fileID: 11400000, guid: f6d7c65932946754cb569a165fe4c637, type: 2}
   nearEdge: 0
   groundLayer:
     serializedVersion: 2

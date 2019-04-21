@@ -7,7 +7,8 @@ public class UnitControl : MonoBehaviour {
 	public Unit unit;
 	public int unitID;
 
-	public FloatVariable currentHP;
+	public HPListVariable currentHP;
+	public CollectVariable collectsToDrop;
 
 	//public int currentHealth;
 	
@@ -82,12 +83,14 @@ public class UnitControl : MonoBehaviour {
 										//If I have time I'll change it up. For now, this should do.
 		if(currentHP!= null){
 			float dmg = (float)damage;
-			currentHP.value -= dmg;
+			currentHP.listValue[unitID] -= ((dmg>unit.defense) ? dmg-unit.defense:0);
+			Debug.Log(dmg-unit.defense);
 
-			if(currentHP.value <=0){
-				currentHP.value = 0;
-				Debug.Log(unit.name+" Died");
-				this.gameObject.SetActive(false);
+
+			if(currentHP.listValue[unitID] <=0){
+				currentHP.listValue[unitID] = 0;
+				// Debug.Log(unit.name+" Died");
+				// this.gameObject.SetActive(false);
 			}
 		}
 		else{
@@ -125,18 +128,11 @@ public class UnitControl : MonoBehaviour {
 		unitAnim.SetFloat("speed", Mathf.Abs(unitSpeed));
 
 		//change to mouse controls? and move slower backwards?
-		bool right = true;
 		if(unitSpeed<0){ 
-			//unitSprite.flipX = true;
 			gameObject.transform.localScale = new Vector2(-rightDirect,transform.localScale.y);
-		 	right = false;
-	
-			
 		}
-		if(unitSpeed>0){  //ok I have no clue why !right doesn't work but right does. Whatever
-			//unitSprite.flipX = false;
+		if(unitSpeed>0){ 	
 			gameObject.transform.localScale = new Vector2(rightDirect,transform.localScale.y);
-			right = true;
 		}
 	}
 
@@ -165,6 +161,7 @@ public class UnitControl : MonoBehaviour {
     
     return false;
 	}
+
 
 
 	

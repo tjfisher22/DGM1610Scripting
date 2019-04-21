@@ -13,7 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Player 1
   maxHealth: 100
-  strength: 50
+  strength: 25
+  defence: 10
   hostile: 0
   speed: 10
   sprintModifier: 2

@@ -45,7 +45,6 @@ public class MeleeAttacks : MonoBehaviour {
 		if(!onCooldown){
 				attackerAnim.SetTrigger("slash");
 				damage = weapon.damage + attacker.strength;
-				//since I'm going to use different sprites, this may be able to be replaced with onTriggerEnter?
 				Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackReach.position, attackSize, enemyLayer);
 				for (int i = 0; i< enemiesToDamage.Length; i++){
 					enemiesToDamage[i].GetComponent<UnitControl>().TakeDamage(damage);

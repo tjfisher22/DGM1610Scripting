@@ -4,6 +4,7 @@ using UnityEngine;
 
 
 // [System.Serializable]
+//Should probably just convert the 2d list into a dictionary instead
 public  class ListVariable<T,Y> : ScriptableObject {
 
 	public string description;
@@ -31,7 +32,7 @@ public  class ListVariable<T,Y> : ScriptableObject {
 
 //Should be an overload function for when listVariable is only passed on thing
 //allows for one dimensional lists as well
-public  class ListVariable<T> : ScriptableObject {
+public class ListVariable<T> : ScriptableObject {
 
 	public string description;
 	public float value;
@@ -43,5 +44,21 @@ public  class ListVariable<T> : ScriptableObject {
 	public void Remove(T t){
 		if(listValue.Contains(t)) listValue.Remove(t);
 	}
+	//public int Count{
+		//get; //listValue.Count(t);//if(listValue.Contains(t)) listValue.Count(t);
+	//}
+
+
+	// public int FindZero(){
+    //     for (int i = listValue.Count - 1; i >=0 ; i--){
+			
+	// 		if(listValue[i] == null){
+	// 			Debug.Log("i is" + i);
+	// 			return i;
+	// 		}
+	// 		else return 0;
+	// 	}
+
+    //  }
 }
 		
