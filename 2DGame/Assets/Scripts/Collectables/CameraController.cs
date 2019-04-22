@@ -5,8 +5,9 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
 
 	public GameObject player;
-
+	public bool offsetY;
 	private Vector3 offset;
+
 
 	// Use this for initialization
 	void Start () {
@@ -16,8 +17,11 @@ public class CameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate () {
-
-		transform.position = new Vector3(player.transform.position.x + offset.x,transform.position.y,transform.position.z);
-		
+		if(offsetY){
+			transform.position = player.transform.position + offset;
+		}
+		else {
+			transform.position = new Vector3(player.transform.position.x + offset.x,transform.position.y,transform.position.z);
+		}
 	}
 }
