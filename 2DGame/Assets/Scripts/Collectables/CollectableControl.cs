@@ -23,30 +23,20 @@ public class CollectableControl : MonoBehaviour {
 		collectSprite.color = pickUp.color;
 		collectSprite.sortingOrder = 100;
 	}
-	
 	// Update is called once per frame
 	void Update () {
-		
+		TooLow();
 	}
-
-
 	public void CollectValues(int value){
-		
 		CollectableValue = value;
-		//destroy object
-		// if(pickedUp){
-		// 	Debug.Log("Destroy Up");
-		// 	Destroy(gameObject);
-		// }
-		
-
-
 	}
-
 	void OnTriggerEnter2D(Collider2D other){
 		//Debug.Log(other.gameObject.layer);
 		if(other.gameObject.tag!="Player"){
 			return;
+		}
+		if(other.gameObject.tag!="Enemy"){
+			Destroy(gameObject);
 		}
 		else{
 			//bool pickedUp = true;
@@ -54,7 +44,6 @@ public class CollectableControl : MonoBehaviour {
 			PickUpCollect();
 		}
 	}
-	
 	void PickUpCollect(){
 
 		switch(pickUp.type){
@@ -68,10 +57,11 @@ public class CollectableControl : MonoBehaviour {
 				Debug.Log("NoCollectType");
 				break;
 		}
-
-
 		Destroy(gameObject);
-
-
+	}
+	void TooLow(){
+		if(gameObject.transform.position.y < -15){
+			Destroy(gameObject);
+		}
 	}
 }
