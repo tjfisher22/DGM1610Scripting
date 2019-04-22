@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 212635891078241982}
   m_Layer: 9
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,9 +57,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4274751967592380}
   m_Layer: 9
-  m_Name: WeaponAttackCenter
+  m_Name: UnitCheck
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -178,7 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60ed47d270ef2a4f99aeb3d306ba2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attacker: {fileID: 11400000, guid: 6f59f3db11a48f94ca4e97424ab1d559, type: 2}
   weapon: {fileID: 11400000, guid: 1c41b0b5e31beb24484dfb4ca90623e5, type: 2}
   timeToAttack: 0
   attackCooldown: 0
@@ -201,8 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5f32ac60f655e342b8f32f3e22be435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 11400000, guid: 6f59f3db11a48f94ca4e97424ab1d559, type: 2}
+  unit: {fileID: 11400000, guid: cd4c1254ea0b16b4b8592603191e2f77, type: 2}
   unitID: 0
+  unitDirMod: 1
   currentHP: {fileID: 11400000, guid: f6d7c65932946754cb569a165fe4c637, type: 2}
   collectsToDrop: {fileID: 11400000, guid: 68b2183375d2ec44db3403eb1c1e745c, type: 2}
   nearEdge: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3a2c00b4b3c9f4e9f634cca08d5412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 11400000, guid: 6f59f3db11a48f94ca4e97424ab1d559, type: 2}
+  unit: {fileID: 11400000, guid: cd4c1254ea0b16b4b8592603191e2f77, type: 2}
 --- !u!212 &212635891078241982
 SpriteRenderer:
   m_ObjectHideFlags: 1

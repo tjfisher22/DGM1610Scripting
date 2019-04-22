@@ -6,6 +6,8 @@ public class UnitControl : MonoBehaviour {
 
 	public Unit unit;
 	public int unitID;
+	[HideInInspector]
+	public int unitDirMod = 1;
 
 	public HPListVariable currentHP;
 	public CollectListVariable collectsToDrop;
@@ -41,9 +43,9 @@ public class UnitControl : MonoBehaviour {
 	void Start () {
 		
 		// currentHealth = unit.maxHealth;
-		speed = unit.speed;
-		sneakMod = unit.sneakModifier;
-		sprintMod = unit.sprintModifier;
+		//speed = unit.speed;
+		//sneakMod = unit.sneakModifier;
+		//sprintMod = unit.sprintModifier;
 		// jumpHeight = unit.jumpHeight;
 		//putting these in start limits their usefullness as SOs
 
@@ -62,21 +64,25 @@ public class UnitControl : MonoBehaviour {
 	void FixedUpdate () {
 		Walk();
 		//EdgeCheck(.2f);//should this be in normal update()
-		
+		TooLow();
 	}
 
 	public bool IsEdge(float speed){
 		//use speed to modify sphere radius
 		Collider2D[] platformColliders = Physics2D.OverlapCircleAll(edgeCheck.position, .5f, groundLayer);
 		if(platformColliders.Length == 0){
-			Debug.Log("Edge Detected");
 			return true;
 		}
 		else return false;
-
-
-
 	}
+	public bool IsNearEnemy(float weaponRange){
+		Collider2D[] platformColliders = Physics2D.OverlapCircleAll(edgeCheck.position, .5f, groundLayer);
+		if(platformColliders.Length == 0){
+			return true;
+		}
+		else return false;
+	}
+
 
 	public void TakeDamage(int damage){//This should probably get moved to a manager, because right now it passes from MeleeAttacks to Enemy Manager
 										//but becasue I have this backed into the player I'd also have to create a manager for the player
@@ -84,9 +90,6 @@ public class UnitControl : MonoBehaviour {
 		if(currentHP!= null){
 			float dmg = (float)damage;
 			currentHP.listValue[unitID] -= ((dmg>unit.defense) ? dmg-unit.defense:0);
-
-
-
 			if(currentHP.listValue[unitID] <=0){
 				currentHP.listValue[unitID] = 0;
 				// Debug.Log(unit.name+" Died");
@@ -104,9 +107,9 @@ public class UnitControl : MonoBehaviour {
 
 	}
 	void Walk(){
-		float moveSpeed = movementInputValue*speed;
-		float sneakSpeed = moveSpeed*sneakMod;
-		float sprintSpeed = moveSpeed*sprintMod;
+		float moveSpeed = movementInputValue*unit.speed;
+		float sneakSpeed = moveSpeed*unit.sneakModifier;
+		float sprintSpeed = moveSpeed*unit.sprintModifier;
 		float unitSpeed;
 
 		//Determine which movement speed and animation cycle should be applied
@@ -120,6 +123,7 @@ public class UnitControl : MonoBehaviour {
 		else {
 			unitSpeed = moveSpeed;
 		}
+		unitSpeed *= unitDirMod;
 
 		//Move the unit
 		unitBody.velocity = new Vector2(unitSpeed,unitBody.velocity.y);
@@ -162,7 +166,11 @@ public class UnitControl : MonoBehaviour {
     return false;
 	}
 
-
+	void TooLow(){
+		if(gameObject.transform.position.y < -10){
+			currentHP.listValue[unitID] = 0;
+		}
+	}
 
 	
 

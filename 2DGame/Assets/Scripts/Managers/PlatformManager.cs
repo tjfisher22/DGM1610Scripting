@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class PlatformManager : MonoBehaviour {
 
+	public GameObject enemyMng;
+	[Range(0.0f,1.0f)]
+	public float enemySpawnChance = .5f; //SO might be better for development
+
     public int maxPlatforms = 20;
     public GameObject platform;
     public float horizontalMin = 7.5f;
     public float horizontalMax = 14f;
     public float verticalMin = -6f;
     public float verticalMax = 6;
+	[HideInInspector]
+	public Vector2 randomPosition;
 
 	private Vector2 originPosition;
 
@@ -21,17 +27,16 @@ public class PlatformManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
-
-		
 	}
 
 	void Spawn(){
 		for (int i = 0; i < maxPlatforms; i++) {
-            Vector2 randomPosition = originPosition + new Vector2 (Random.Range(horizontalMin, horizontalMax), Random.Range (verticalMin, verticalMax));
+            randomPosition = originPosition + new Vector2 (Random.Range(horizontalMin, horizontalMax), Random.Range (verticalMin, verticalMax));
             Instantiate(platform, randomPosition, Quaternion.identity);
             originPosition = randomPosition;
+			if(Random.Range(0.0f,1.0f)<enemySpawnChance){
+				enemyMng.GetComponent<EnemyManager>().SpawnEnemy(new Vector2(originPosition.x,originPosition.y+5));
+			}
         }
 	}
 }

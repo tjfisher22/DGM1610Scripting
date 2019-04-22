@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Enemy",menuName="Unit/Patrol Enemy")]
 public class EnemyPatrolUnit : Unit {
+	Unit unitType;
+	
 
-	public override void Think(UnitAI unit){
+	public override void Think(UnitAI unitAI){
 
+		unitType = unitAI.GetComponent<UnitControl>().unit;
 		//movement
-		unit.GetComponent<UnitControl>().Control(-.1f, false, false);
-
-		//jumping
-		if(false){
-			unit.GetComponent<UnitControl>().Jump();
+		unitAI.GetComponent<UnitControl>().Control(1f, false, false);
+		if(unitAI.GetComponent<UnitControl>().IsEdge(speed)){
+			unitAI.GetComponent<UnitControl>().unitDirMod *= -1;
+			Debug.Log(unitAI.GetComponent<UnitControl>().unitDirMod);
+			
 		}
-
+		//jumping
 		//melee attack
 		if(false){
-			unit.GetComponent<MeleeAttacks>().MeleeAttack();
+			unitAI.GetComponent<MeleeAttacks>().MeleeAttack(unitType);
 		}
 
 		

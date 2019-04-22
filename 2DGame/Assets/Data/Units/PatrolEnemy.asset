@@ -8,17 +8,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94347daf1c3415946a71d855c423f034, type: 3}
-  m_Name: DumbEnemy
+  m_Script: {fileID: 11500000, guid: ef7f1dd49756516428c30e63e20e050a, type: 3}
+  m_Name: PatrolEnemy
   m_EditorClassIdentifier: 
-  name: Weak Enemy
-  maxHealth: 50
-  strength: 10
-  defense: 0
-  hostile: 0
-  speed: -5
+  name: Patroller
+  maxHealth: 15
+  strength: 15
+  defense: 5
+  hostile: 1
+  speed: 3
   sprintModifier: 2
   sneakModifier: 0.5
-  jumpHeight: 15
+  jumpHeight: 10
   unitSprite: {fileID: 0}
-  unitColor: {r: 1, g: 0, b: 0, a: 1}
+  unitColor: {r: 1, g: 0.6286478, b: 0, a: 1}

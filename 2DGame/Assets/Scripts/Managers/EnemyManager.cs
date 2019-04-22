@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour {
 
 	public HPListVariable enemyHPs;
+	public UnitListVariable enemyTypes;
 	public Transform enemyPrefab;
 	public Transform collectPrefab;
 
@@ -25,23 +26,28 @@ public class EnemyManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		SpawnEnemy(new Vector2(0,10));
+		// SpawnEnemy(new Vector2(0,10));
 		KillEnemy();
 
 		
 	}
 
-	void SpawnEnemy (Vector2 position) {
-		if(Input.GetButtonDown("Jump")){
+	public void SpawnEnemy (Vector2 position) {
+		// if(Input.GetButtonDown("Jump")){
 			GameObject obj;
+			int rngEnemy = Random.Range(0,enemyTypes.listValue.Count);
+			Debug.Log("enemy Rng" + rngEnemy);
 			obj = Instantiate(enemyPrefab, position, Quaternion.identity).gameObject;
+			obj.GetComponent<UnitControl>().unit = enemyTypes.listValue[rngEnemy];
+			obj.GetComponent<UnitAI>().unit = enemyTypes.listValue[rngEnemy];
 			//Debug.Log(obj);
 			enemyHPs.listValue.Add(enemyPrefab.gameObject.GetComponent<UnitControl>().unit.maxHealth);
 			//Debug.Log((enemyPrefab.gameObject.GetComponent<UnitControl>().unit.maxHealth));
 			obj.GetComponent<UnitControl>().unitID = enemyNumber;
 			objList.Add(obj);
 			enemyNumber++;
-		}
+			Debug.Log("EnemSpawn");
+		
 		//addsome randomness to the enemy as well maybe?
 
 		
