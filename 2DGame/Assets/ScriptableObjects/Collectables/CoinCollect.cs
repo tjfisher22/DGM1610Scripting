@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Coin", menuName = "Collectables/Coin")]
 public class CoinCollect : Collectables {
 	public int coinValue;
+	public FloatVariable playerCoins;
 
 
 
@@ -14,6 +15,7 @@ public class CoinCollect : Collectables {
 	// }
 	public override void Collect(CollectableAI pickUp){
 			pickUp.GetComponent<CollectableControl>().CollectValues(coinValue*amount);
+			pickUp.GetComponent<CollectableControl>().
 
 			//put collectable specific stuff here
 			//Like add powerups, add to score.

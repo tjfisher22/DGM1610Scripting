@@ -23,7 +23,7 @@ public class EnemyDumbUnit : Unit {
 		}
 		//melee attack
 		if(true){
-			unitAI.GetComponent<MeleeAttacks>().MeleeAttack(unitType);
+			unitAI.GetComponent<MeleeAttacks>().MeleeAttackAnimation();
 		}
 	}
 }

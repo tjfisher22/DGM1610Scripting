@@ -65,6 +65,7 @@ public class UnitControl : MonoBehaviour {
 		Walk();
 		//EdgeCheck(.2f);//should this be in normal update()
 		TooLow();
+		IsFalling();
 	}
 
 	public bool IsEdge(float speed){
@@ -75,7 +76,7 @@ public class UnitControl : MonoBehaviour {
 		}
 		else return false;
 	}
-	public bool IsNearEnemy(float weaponRange){
+	public bool IsNearEnemy(float weaponRange){//need to update
 		Collider2D[] platformColliders = Physics2D.OverlapCircleAll(edgeCheck.position, .5f, groundLayer);
 		if(platformColliders.Length == 0){
 			return true;
@@ -170,9 +171,16 @@ public class UnitControl : MonoBehaviour {
 	public bool IsFalling() {
 		if(IsGrounded()) {
 			//add falling animation here
+			//unitAnim.SetLayerWeight (unitAnim.GetLayerIndex ("Air Movement"), 0);
+			unitAnim.SetBool("falling", false);
+			//Debug.Log("Not Falling");
+
 			return false;
 		}
 		else {
+			//unitAnim.SetLayerWeight (unitAnim.GetLayerIndex ("Air Movement"), 2);
+			unitAnim.SetBool("falling", true);
+			//Debug.Log("Falling");
 			return true;
 		}
 	}

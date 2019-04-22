@@ -6,11 +6,13 @@ public class CollectableControl : MonoBehaviour {
 	public bool pickedUp;
 	public Collectables pickUp;
 	public int pickUpID;
-	public CollectListVariable PlayerCollectables; //Get a better name for this 
+	//public Inventory PlayerInventory; //Get a better name for this 
 	public CollectListVariable possiblePickUps; //this should probably be a dictionary for quicker look up times
 	[HideInInspector]
 	public int CollectableValue;
 	private SpriteRenderer collectSprite;
+
+	private bool pickedUp;
 	
 
 	// Use this for initialization
@@ -29,6 +31,7 @@ public class CollectableControl : MonoBehaviour {
 	}
 	public void CollectValues(int value){
 		CollectableValue = value;
+		Debug.Log("Collect Value" + CollectableValue);
 	}
 	//overload collectvalues for arrows
 	void OnTriggerEnter2D(Collider2D other){
@@ -48,20 +51,26 @@ public class CollectableControl : MonoBehaviour {
 			PickUpCollect();
 		}
 	}
-	void PickUpCollect(){
+	void PickUpCollect(FloatVariable playerCoins){
 
-		switch(pickUp.type){
-			case Collectables.CollectableType.Coin:
-				//PlayerCollectables.value += CollectableValue;
-				break;
-			case Collectables.CollectableType.Arrow:
-				//Make an array of floatvariables for different arrow types
-				break;
-			default:
-				Debug.Log("NoCollectType");
-				break;
-		}
+
+
+		// switch(pickUp.type){
+		// 	case Collectables.CollectableType.Coin:
+		// 		//PlayerCollectables.value += CollectableValue;
+		// 		break;
+		// 	case Collectables.CollectableType.Arrow:
+		// 		//Make an array of floatvariables for different arrow types
+		// 		break;
+		// 	default:
+		// 		Debug.Log("NoCollectType");
+		// 		break;
+		// }
 		Destroy(gameObject);
+	}
+	void PickUpCollect(Inventory playerInventory){
+		//switch(pickUp.type.ArrowType)
+
 	}
 	void TooLow(){
 		if(gameObject.transform.position.y < -25){

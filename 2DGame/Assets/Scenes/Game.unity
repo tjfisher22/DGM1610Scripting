@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMng: {fileID: 38175157}
-  enemySpawnChance: 1
+  enemySpawnChance: 0.5
   maxPlatforms: 15
   platform: {fileID: 1349853232667072, guid: 05f69d5c415e26846af6cee51996fe07, type: 2}
   horizontalMin: 14
@@ -473,7 +473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 121.59, y: -25.399994}
+  m_AnchoredPosition: {x: 121.589966, y: -25.399994}
   m_SizeDelta: {x: 200, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &715391551
@@ -671,7 +671,7 @@ MonoBehaviour:
   unitID: 0
   unitDirMod: 1
   currentHP: {fileID: 11400000, guid: dd867da645e1591439a90448a4bf6d8f, type: 2}
-  collectsToDrop: {fileID: 0}
+  collectsToDrop: {fileID: 11400000, guid: 68b2183375d2ec44db3403eb1c1e745c, type: 2}
   nearEdge: 0
   groundLayer:
     serializedVersion: 2
@@ -689,6 +689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 11400000, guid: 1c41b0b5e31beb24484dfb4ca90623e5, type: 2}
+  attacker: {fileID: 11400000, guid: 1ed82319c03cd274fbbc22bb96cac93d, type: 2}
   timeToAttack: 0
   attackCooldown: 0
   attackReach: {fileID: 1785270646}
@@ -816,7 +817,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 121.59, y: -25.399994}
+  m_AnchoredPosition: {x: 121.589966, y: -25.399994}
   m_SizeDelta: {x: 195, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1280471170

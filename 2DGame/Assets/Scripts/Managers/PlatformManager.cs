@@ -35,7 +35,7 @@ public class PlatformManager : MonoBehaviour {
             Instantiate(platform, randomPosition, Quaternion.identity);
             originPosition = randomPosition;
 			if(Random.Range(0.0f,1.0f)<enemySpawnChance){
-				enemyMng.GetComponent<EnemyManager>().SpawnEnemy(new Vector2(originPosition.x,originPosition.y+5));
+				enemyMng.GetComponent<EnemyManager>().SpawnEnemy(new Vector2(originPosition.x+Random.Range(-3,3),originPosition.y+Random.Range(3,6)));
 			}
         }
 	}

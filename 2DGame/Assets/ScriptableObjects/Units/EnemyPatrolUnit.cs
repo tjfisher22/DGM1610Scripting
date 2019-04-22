@@ -20,7 +20,7 @@ public class EnemyPatrolUnit : Unit {
 		//jumping
 		//melee attack
 		if(false){
-			unitAI.GetComponent<MeleeAttacks>().MeleeAttack(unitType);
+			unitAI.GetComponent<MeleeAttacks>().MeleeAttack();
 		}
 
 		

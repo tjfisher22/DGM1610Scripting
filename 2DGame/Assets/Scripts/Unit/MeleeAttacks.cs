@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MeleeAttacks : MonoBehaviour {
  	public Weapon weapon; 
+	public Unit attacker;
 
 	public float timeToAttack;
 	public float attackCooldown;
@@ -31,11 +32,16 @@ public class MeleeAttacks : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	}
-	public void MeleeAttack(Unit attacker){
+	public void MeleeAttackAnimation(){
+		attackerAnim = gameObject.GetComponent<Animator>();
+		attackerAnim.SetTrigger("slash");
+	}
+	public void MeleeAttack(){
 		if(!onCooldown){
-				attackerAnim = gameObject.GetComponent<Animator>();
-				attackerAnim.SetTrigger("slash");
+				//attackerAnim = gameObject.GetComponent<Animator>();
+				//attackerAnim.SetTrigger("slash");
 				damage = weapon.damage + attacker.strength;
+				Debug.Log("Attacked");
 				Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackReach.position, attackSize, enemyLayer);
 				for (int i = 0; i< enemiesToDamage.Length; i++){
 					enemiesToDamage[i].GetComponent<UnitControl>().TakeDamage(damage);

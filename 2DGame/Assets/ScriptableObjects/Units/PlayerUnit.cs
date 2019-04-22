@@ -36,7 +36,8 @@ public class PlayerUnit : Unit {
 
 		//melee attack
 		if(Input.GetButtonDown(meleeButton)){
-			unit.GetComponent<MeleeAttacks>().MeleeAttack(unitType);
+			//unit.GetComponent<MeleeAttacks>().MeleeAttack(unitType);
+			unit.GetComponent<MeleeAttacks>().MeleeAttackAnimation();
 		}
 
 		
