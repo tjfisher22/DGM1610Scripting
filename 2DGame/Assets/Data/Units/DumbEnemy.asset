@@ -16,9 +16,9 @@ MonoBehaviour:
   strength: 10
   defense: 0
   hostile: 0
-  speed: -5
+  speed: -7
   sprintModifier: 2
   sneakModifier: 0.5
-  jumpHeight: 15
+  jumpHeight: 20
   unitSprite: {fileID: 0}
   unitColor: {r: 1, g: 0, b: 0, a: 1}

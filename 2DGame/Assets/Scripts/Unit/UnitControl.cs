@@ -143,7 +143,7 @@ public class UnitControl : MonoBehaviour {
 	//Jump() and IsGrounded() could be moved to another script to provide access to other entities potentially
 	public void Jump(){
 		float jump = unit.jumpHeight;
-			if(!IsGrounded()){return;}
+			if(IsFalling()){return;}
 			unitBody.velocity = new Vector2(unitBody.velocity.x,jump);
 			//grounded=false;
 			//play jump animation here
@@ -158,7 +158,8 @@ public class UnitControl : MonoBehaviour {
     	
     
         Debug.DrawRay(position, direction, Color.green);
-    	RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer);
+		//Apparently raycasting is bad for optimization, probably should change it to a child gameobject
+    	RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer); 
     	if (hit.collider != null) {
         	return true;
     	}
@@ -166,8 +167,25 @@ public class UnitControl : MonoBehaviour {
     return false;
 	}
 
+	public bool IsFalling() {
+		if(IsGrounded()) {
+			//add falling animation here
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+
 	void TooLow(){
-		if(gameObject.transform.position.y < -10){
+		if(gameObject.transform.position.y < -100){
+			currentHP.listValue[unitID] = 0;
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D other){
+		//Debug.Log(other.gameObject.layer);
+		if(other.gameObject.layer==LayerMask.NameToLayer("Death")){
 			currentHP.listValue[unitID] = 0;
 		}
 	}

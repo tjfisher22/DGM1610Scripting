@@ -35,23 +35,30 @@ public class EnemyManager : MonoBehaviour {
 	public void SpawnEnemy (Vector2 position) {
 		// if(Input.GetButtonDown("Jump")){
 			GameObject obj;
-			int rngEnemy = Random.Range(0,enemyTypes.listValue.Count);
-			Debug.Log("enemy Rng" + rngEnemy);
+			float rngSum = 0;
+			int enemyChoice = 0;
+			//Sum up all the random chances
+			for(int i = 0; i<enemyTypes.listValue2.Count; i++){
+				rngSum += enemyTypes.listValue2[i];
+			}
+			float rngEnemy = Random.Range(0,rngSum);
+			rngSum = 0;
+			for(int i = 0; i<enemyTypes.listValue.Count; i++){
+				rngSum += enemyTypes.listValue2[i];
+				if(rngEnemy<rngSum){
+					enemyChoice = i;
+					break;
+				}
+			}
 			obj = Instantiate(enemyPrefab, position, Quaternion.identity).gameObject;
-			obj.GetComponent<UnitControl>().unit = enemyTypes.listValue[rngEnemy];
-			obj.GetComponent<UnitAI>().unit = enemyTypes.listValue[rngEnemy];
+			obj.GetComponent<UnitControl>().unit = enemyTypes.listValue[enemyChoice];
+			obj.GetComponent<UnitAI>().unit = enemyTypes.listValue[enemyChoice];
 			//Debug.Log(obj);
 			enemyHPs.listValue.Add(enemyPrefab.gameObject.GetComponent<UnitControl>().unit.maxHealth);
 			//Debug.Log((enemyPrefab.gameObject.GetComponent<UnitControl>().unit.maxHealth));
 			obj.GetComponent<UnitControl>().unitID = enemyNumber;
 			objList.Add(obj);
 			enemyNumber++;
-			Debug.Log("EnemSpawn");
-		
-		//addsome randomness to the enemy as well maybe?
-
-		
-
 	}
 
 	//Should probably move spawn enemy to seperate class for

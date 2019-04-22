@@ -30,13 +30,17 @@ public class CollectableControl : MonoBehaviour {
 	public void CollectValues(int value){
 		CollectableValue = value;
 	}
+	//overload collectvalues for arrows
 	void OnTriggerEnter2D(Collider2D other){
 		//Debug.Log(other.gameObject.layer);
+		if(other.gameObject.tag=="Enemy"){
+			Destroy(gameObject);
+		}
+		if(other.gameObject.layer==LayerMask.NameToLayer("Death")){
+			Destroy(gameObject);
+		}
 		if(other.gameObject.tag!="Player"){
 			return;
-		}
-		if(other.gameObject.tag!="Enemy"){
-			Destroy(gameObject);
 		}
 		else{
 			//bool pickedUp = true;
@@ -60,7 +64,7 @@ public class CollectableControl : MonoBehaviour {
 		Destroy(gameObject);
 	}
 	void TooLow(){
-		if(gameObject.transform.position.y < -15){
+		if(gameObject.transform.position.y < -25){
 			Destroy(gameObject);
 		}
 	}

@@ -16,3 +16,6 @@ MonoBehaviour:
   listValue:
   - {fileID: 11400000, guid: 6f59f3db11a48f94ca4e97424ab1d559, type: 2}
   - {fileID: 11400000, guid: cd4c1254ea0b16b4b8592603191e2f77, type: 2}
+  listValue2:
+  - 0.75
+  - 0.25
