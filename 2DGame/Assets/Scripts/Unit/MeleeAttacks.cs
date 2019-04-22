@@ -3,46 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MeleeAttacks : MonoBehaviour {
-
-	public Unit attacker;
-	public Weapon weapon; 
+ 	public Weapon weapon; 
 
 	public float timeToAttack;
 	public float attackCooldown;
 
 	public Transform attackReach;
 	public LayerMask enemyLayer;
-	[HideInInspector]public float attackSize;
+	[HideInInspector]
+	public float attackSize;
+	[HideInInspector]
 	public int damage;
 
 	private Animator attackerAnim;
-
+	[HideInInspector]
 	public bool onCooldown;
-	
-	
-	//float distance = 2f;
-	//public Vector2 direction = new Vector2(0,-1*distance);
+	[HideInInspector]
 	public Vector2 position;
 
 	// Use this for initialization
 	void Start () {
 		attackCooldown = weapon.attackCooldown;
-		attackerAnim = gameObject.GetComponent<Animator> ();
 		attackSize = weapon.weaponSize;
-		onCooldown = false;
-		
-
-    	
+		onCooldown = false;	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-
 	}
-
-	public void MeleeAttack(){
+	public void MeleeAttack(Unit attacker){
 		if(!onCooldown){
+				attackerAnim = gameObject.GetComponent<Animator>();
 				attackerAnim.SetTrigger("slash");
 				damage = weapon.damage + attacker.strength;
 				Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackReach.position, attackSize, enemyLayer);

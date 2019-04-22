@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Player", menuName = "Unit/Player Unit")]
 public class PlayerUnit : Unit {
-
+	Unit unitType;
 	public int playerNumber;
 	private string movementAxisName;
 	private string jumpAxisName;
@@ -24,6 +24,7 @@ public class PlayerUnit : Unit {
 	}
 
 	public override void Think(UnitAI unit){
+		unitType = unit.GetComponent<UnitControl>().unit; 
 
 		//movement
 		unit.GetComponent<UnitControl>().Control(Input.GetAxis(movementAxisName),Input.GetButton(sneakButton),Input.GetButton(sprintButton));
@@ -35,7 +36,7 @@ public class PlayerUnit : Unit {
 
 		//melee attack
 		if(Input.GetButtonDown(meleeButton)){
-			unit.GetComponent<MeleeAttacks>().MeleeAttack();
+			unit.GetComponent<MeleeAttacks>().MeleeAttack(unitType);
 		}
 
 		
