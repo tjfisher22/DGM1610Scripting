@@ -12,6 +12,7 @@ public abstract class Collectables : ScriptableObject {
 	//public int cValue;
 	public CollectableType type;
 	public Color color = Color.black;
+	//private bool pickedUp;
 
 	//public virtual void Initialize(UnitAI unit){}
 	// public abstract void Spawn(CollectableAI Collect);

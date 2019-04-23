@@ -82,6 +82,7 @@ public class EnemyManager : MonoBehaviour {
 					pickUp = Instantiate(collectPrefab, spawnPoint, enemy.transform.rotation);
 					toSpawnID = pickUp.GetComponent<CollectableControl>().possiblePickUps.listValue.IndexOf(drops.listValue[i]);
 					pickUp.GetComponent<CollectableControl>().pickUpID = toSpawnID;
+					pickUp.GetComponent<CollectableAI>().pickUpID = toSpawnID;
 					spawnCount++;
 					if(spawnCount>drops.listValue2[i]) spawning = false;
 				}

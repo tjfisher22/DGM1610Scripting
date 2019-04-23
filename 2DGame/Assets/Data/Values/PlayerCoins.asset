@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: PlayerCoins
   m_EditorClassIdentifier: 
   description: The amount of coins a player has
-  value: 1
+  value: 16

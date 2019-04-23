@@ -15,8 +15,7 @@ public class CoinCollect : Collectables {
 	// }
 	public override void Collect(CollectableAI pickUp){
 			pickUp.GetComponent<CollectableControl>().CollectValues(coinValue*amount);
-			pickUp.GetComponent<CollectableControl>().
-
+			pickUp.GetComponent<CollectableControl>().PickUpCollect(playerCoins);
 			//put collectable specific stuff here
 			//Like add powerups, add to score.
 			//They will functions to call from CollectableControl I believe

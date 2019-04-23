@@ -55,7 +55,7 @@ public class UnitControl : MonoBehaviour {
 		unitSprite = gameObject.GetComponent<SpriteRenderer> ();
 
 		unitSprite.color = unit.unitColor;
-		Debug.Log(unit.unitColor);
+		//Debug.Log(unit.unitColor);
 		rightDirect = transform.localScale.x;
 
 	}
@@ -91,6 +91,8 @@ public class UnitControl : MonoBehaviour {
 		if(currentHP!= null){
 			float dmg = (float)damage;
 			currentHP.listValue[unitID] -= ((dmg>unit.defense) ? dmg-unit.defense:0);
+			Debug.Log(unit.name + "Took Damage");
+			Knockback();
 			if(currentHP.listValue[unitID] <=0){
 				currentHP.listValue[unitID] = 0;
 				// Debug.Log(unit.name+" Died");
@@ -150,6 +152,11 @@ public class UnitControl : MonoBehaviour {
 			//play jump animation here
 			//unitAnim.Play("Jump");
 
+	}
+
+	public void Knockback(){//should this be a couroutine?
+		//Debug.Log("KnockBack");
+		unitBody.AddForce(new Vector2(-unitDirMod, .5f)*.5f);
 	}
 
 	bool IsGrounded() {

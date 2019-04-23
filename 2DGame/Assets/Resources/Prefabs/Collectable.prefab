@@ -126,6 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUp: {fileID: 11400000, guid: 4e6c1bb6d7dc3074a8af96517bb7fbf0, type: 2}
+  pickUpID: 0
+  possiblePickUps: {fileID: 11400000, guid: 886b9703a26fc9140b873fdf12b3bdee, type: 2}
 --- !u!114 &114671462571365702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,12 +139,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edfcbf00f44e48840b7cf094449cb28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickedUp: 0
   pickUp: {fileID: 11400000, guid: 4e6c1bb6d7dc3074a8af96517bb7fbf0, type: 2}
   pickUpID: 0
-  PlayerCollectables: {fileID: 0}
   possiblePickUps: {fileID: 11400000, guid: 886b9703a26fc9140b873fdf12b3bdee, type: 2}
   CollectableValue: 0
+  pickedUp: 0
 --- !u!212 &212283399148725166
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CollectableControl : MonoBehaviour {
-	public bool pickedUp;
+
 	public Collectables pickUp;
+	[HideInInspector]
 	public int pickUpID;
 	//public Inventory PlayerInventory; //Get a better name for this 
 	public CollectListVariable possiblePickUps; //this should probably be a dictionary for quicker look up times
@@ -12,11 +13,12 @@ public class CollectableControl : MonoBehaviour {
 	public int CollectableValue;
 	private SpriteRenderer collectSprite;
 
-	private bool pickedUp;
+	public bool pickedUp;
 	
 
 	// Use this for initialization
 	void Start () {
+		//pickedUp = false;
 		pickUp = possiblePickUps.listValue[pickUpID];
 		//set up the sprite for the object
 		//This might be better in collectableManager
@@ -28,10 +30,12 @@ public class CollectableControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		TooLow();
+		
+		
 	}
 	public void CollectValues(int value){
 		CollectableValue = value;
-		Debug.Log("Collect Value" + CollectableValue);
+		//Debug.Log("Collect Value" + CollectableValue);
 	}
 	//overload collectvalues for arrows
 	void OnTriggerEnter2D(Collider2D other){
@@ -46,15 +50,16 @@ public class CollectableControl : MonoBehaviour {
 			return;
 		}
 		else{
-			//bool pickedUp = true;
-			//Debug.Log("Picked Up");
-			PickUpCollect();
+			pickedUp = true;
+			
+			//PickUpCollect();
 		}
 	}
-	void PickUpCollect(FloatVariable playerCoins){
-
-
-
+	public void PickUpCollect(FloatVariable playerCoins){
+		if(pickedUp){
+			playerCoins.value += CollectableValue;
+			Destroy(gameObject);
+		}
 		// switch(pickUp.type){
 		// 	case Collectables.CollectableType.Coin:
 		// 		//PlayerCollectables.value += CollectableValue;
@@ -66,9 +71,8 @@ public class CollectableControl : MonoBehaviour {
 		// 		Debug.Log("NoCollectType");
 		// 		break;
 		// }
-		Destroy(gameObject);
 	}
-	void PickUpCollect(Inventory playerInventory){
+	public void PickUpCollect(Inventory playerInventory){
 		//switch(pickUp.type.ArrowType)
 
 	}
