@@ -11,6 +11,7 @@ public class UnitControl : MonoBehaviour {
 
 	public HPListVariable currentHP;
 	public CollectListVariable collectsToDrop;
+	public Transform unitCheck;
 
 	//public int currentHealth;
 	
@@ -27,7 +28,7 @@ public class UnitControl : MonoBehaviour {
 
 	bool inKnockback;
 	//float knockbackTime = 1.5f; //add this to unit data
-
+	[HideInInspector]
 	public bool nearEdge;
 
 
@@ -35,6 +36,7 @@ public class UnitControl : MonoBehaviour {
 	private Rigidbody2D unitBody;
 	private SpriteRenderer unitSprite;
 	public LayerMask groundLayer;
+	public LayerMask unitLayer;
 	public Transform edgeCheck;
 
 	// Use this for initialization
@@ -54,6 +56,7 @@ public class UnitControl : MonoBehaviour {
 		Walk();
 		TooLow();
 		IsFalling();
+		IsNearEnemy();
 	}
 
 	public bool IsEdge(float speed){
@@ -64,9 +67,18 @@ public class UnitControl : MonoBehaviour {
 		}
 		else return false;
 	}
-	public bool IsNearEnemy(float weaponRange){//need to update
-		Collider2D[] platformColliders = Physics2D.OverlapCircleAll(edgeCheck.position, .5f, groundLayer);
-		if(platformColliders.Length == 0){
+	public bool IsNearEnemy(){//need to update
+		Collider2D[] unitColliders = Physics2D.OverlapCircleAll(unitCheck.position, .5f, unitLayer);
+		if(unitColliders.Length == 0){
+			for (int i = 0; i< unitColliders.Length; i++){
+					if(unitColliders[i].tag == "Player"){
+						//melee attack
+					}
+					if(unitColliders[i].tag == "Enemy"){
+						//Enemy near
+					}
+					//unitColliders[i].GetComponent<UnitControl>().TakeDamage(damage,gameObject.transform.localScale.x,weapon.knockbackTime);
+				}
 			return true;
 		}
 		else return false;

@@ -206,11 +206,14 @@ MonoBehaviour:
   unitDirMod: 1
   currentHP: {fileID: 11400000, guid: f6d7c65932946754cb569a165fe4c637, type: 2}
   collectsToDrop: {fileID: 11400000, guid: 68b2183375d2ec44db3403eb1c1e745c, type: 2}
-  knockbackTime: 1
+  unitCheck: {fileID: 4274751967592380}
   nearEdge: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  unitLayer:
+    serializedVersion: 2
+    m_Bits: 1536
   edgeCheck: {fileID: 4416809457126066}
 --- !u!114 &114917239568478652
 MonoBehaviour:

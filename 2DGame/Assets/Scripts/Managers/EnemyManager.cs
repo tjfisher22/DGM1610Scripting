@@ -9,6 +9,7 @@ public class EnemyManager : MonoBehaviour {
 	public UnitListVariable enemyTypes;
 	public Transform enemyPrefab;
 	public Transform collectPrefab;
+	
 	//private CollectListVariable allDrops;
 
 	private int toSpawnID;
