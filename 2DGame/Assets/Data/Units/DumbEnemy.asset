@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: DumbEnemy
   m_EditorClassIdentifier: 
   name: Weak Enemy
-  maxHealth: 50
+  maxHealth: 2
   strength: 10
   defense: 0
   hostile: 0

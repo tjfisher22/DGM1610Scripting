@@ -12,6 +12,8 @@ public class CollectableControl : MonoBehaviour {
 	[HideInInspector]
 	public int CollectableValue;
 	private SpriteRenderer collectSprite;
+	private Animator collectAnim;
+	private int animCollectType = 1;
 
 	public bool pickedUp;
 	
@@ -19,20 +21,34 @@ public class CollectableControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//pickedUp = false;
-		pickUp = possiblePickUps.listValue[pickUpID];
-		Debug.Log("Collectable name is: "+pickUp.name); //something here not working right
+		pickUp = possiblePickUps.listValue[pickUpID];//would be cool to connect this to collectableAI script
+		// Debug.Log("Collectable name is: "+pickUp.name); //something here not working right
+		// Debug.Log("Collectable name is: "+pickUp.color);
+		// Debug.Log("Collectable name is: "+pickUp.sprite);
 		//set up the sprite for the object
 		//This might be better in collectableManager
+		collectAnim = gameObject.GetComponent<Animator> ();
 		collectSprite = gameObject.GetComponent<SpriteRenderer> ();
 		collectSprite.sprite = pickUp.sprite;
 		collectSprite.color = pickUp.color;
 		collectSprite.sortingOrder = 100;
+		switch(pickUp.type){
+			case Collectables.CollectableType.Coin:
+				animCollectType = 0;
+				break;
+			case Collectables.CollectableType.Arrow:
+				animCollectType = 1;
+				break;
+			default:
+				Debug.Log("NoCollectType");
+				break;
+		}
+		collectAnim.SetInteger("CollectType", animCollectType);
+		Debug.Log("Anim Collect Type = " + animCollectType);
 	}
 	// Update is called once per frame
 	void Update () {
-		TooLow();
-		
-		
+		TooLow();	
 	}
 	public void CollectValues(int value){
 		CollectableValue = value;

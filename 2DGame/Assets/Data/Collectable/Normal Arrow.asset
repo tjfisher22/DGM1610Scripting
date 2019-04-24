@@ -16,5 +16,7 @@ MonoBehaviour:
   amount: 5
   type: 0
   color: {r: 1, g: 1, b: 1, a: 1}
+  animControl: {fileID: 9100000, guid: 0498c177310d46744b5282aac7db2e62, type: 2}
   arrowType: 0
   arrowDamage: 10
+  knockBack: 0

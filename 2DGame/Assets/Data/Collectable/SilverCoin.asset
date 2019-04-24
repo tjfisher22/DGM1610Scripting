@@ -16,5 +16,6 @@ MonoBehaviour:
   amount: 1
   type: 0
   color: {r: 0.79215693, g: 0.79215693, b: 0.79215693, a: 1}
+  animControl: {fileID: 9100000, guid: 20c2e31cc0781c344bb219f14e8d7ad7, type: 2}
   coinValue: 5
   playerCoins: {fileID: 11400000, guid: 2f56192a7dacdc24c8645fa5c0fe2257, type: 2}
