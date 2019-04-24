@@ -25,11 +25,9 @@ public class UnitControl : MonoBehaviour {
 	bool sneakInput;
 	bool sprintInput;
 
-	
-		
+	bool inKnockback;
+	float knockbackTime = 1.5f; //add this to unit data
 
-	// bool hasDoubleJump = false;
-	//bool grounded = false;
 	public bool nearEdge;
 
 
@@ -41,21 +39,11 @@ public class UnitControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-		// currentHealth = unit.maxHealth;
-		//speed = unit.speed;
-		//sneakMod = unit.sneakModifier;
-		//sprintMod = unit.sprintModifier;
-		// jumpHeight = unit.jumpHeight;
-		//putting these in start limits their usefullness as SOs
-
-
 		unitAnim = gameObject.GetComponent<Animator> ();
 		unitBody = gameObject.GetComponent<Rigidbody2D> ();
 		unitSprite = gameObject.GetComponent<SpriteRenderer> ();
 
 		unitSprite.color = unit.unitColor;
-		//Debug.Log(unit.unitColor);
 		rightDirect = transform.localScale.x;
 
 	}
@@ -63,7 +51,6 @@ public class UnitControl : MonoBehaviour {
 
 	void FixedUpdate () {
 		Walk();
-		//EdgeCheck(.2f);//should this be in normal update()
 		TooLow();
 		IsFalling();
 	}
@@ -85,14 +72,14 @@ public class UnitControl : MonoBehaviour {
 	}
 
 
-	public void TakeDamage(int damage){//This should probably get moved to a manager, because right now it passes from MeleeAttacks to Enemy Manager
+	public void TakeDamage(int damage, float dir){//This should probably get moved to a manager, because right now it passes from MeleeAttacks to Enemy Manager
 										//but becasue I have this backed into the player I'd also have to create a manager for the player
 										//If I have time I'll change it up. For now, this should do.
 		if(currentHP!= null){
 			float dmg = (float)damage;
 			currentHP.listValue[unitID] -= ((dmg>unit.defense) ? dmg-unit.defense:0);
 			Debug.Log(unit.name + "Took Damage");
-			Knockback();
+			StartCoroutine(Knockback(dir));
 			if(currentHP.listValue[unitID] <=0){
 				currentHP.listValue[unitID] = 0;
 				// Debug.Log(unit.name+" Died");
@@ -110,6 +97,7 @@ public class UnitControl : MonoBehaviour {
 
 	}
 	void Walk(){
+		if(inKnockback){return;}
 		float moveSpeed = movementInputValue*unit.speed;
 		float sneakSpeed = moveSpeed*unit.sneakModifier;
 		float sprintSpeed = moveSpeed*unit.sprintModifier;
@@ -148,15 +136,18 @@ public class UnitControl : MonoBehaviour {
 		float jump = unit.jumpHeight;
 			if(IsFalling()){return;}
 			unitBody.velocity = new Vector2(unitBody.velocity.x,jump);
-			//grounded=false;
 			//play jump animation here
 			//unitAnim.Play("Jump");
 
 	}
 
-	public void Knockback(){//should this be a couroutine?
-		//Debug.Log("KnockBack");
-		unitBody.AddForce(new Vector2(-unitDirMod, .5f)*.5f);
+	public IEnumerator Knockback(float kbDir){
+		inKnockback = true;
+		Debug.Log("KnockBack");
+		//gameObject.transform.localScale = new Vector2(-kbDir,transform.localScale.y);
+		unitBody.AddForce(new Vector2(kbDir, 1.5f)*1500f);
+		yield return new WaitForSeconds(knockbackTime);
+		inKnockback = false;
 	}
 
 	bool IsGrounded() {
@@ -167,7 +158,7 @@ public class UnitControl : MonoBehaviour {
     
         Debug.DrawRay(position, direction, Color.green);
 		//Apparently raycasting is bad for optimization, probably should change it to a child gameobject
-    	RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer); 
+		RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer); 
     	if (hit.collider != null) {
         	return true;
     	}
@@ -181,7 +172,6 @@ public class UnitControl : MonoBehaviour {
 			//unitAnim.SetLayerWeight (unitAnim.GetLayerIndex ("Air Movement"), 0);
 			unitAnim.SetBool("falling", false);
 			//Debug.Log("Not Falling");
-
 			return false;
 		}
 		else {
@@ -191,7 +181,7 @@ public class UnitControl : MonoBehaviour {
 			return true;
 		}
 	}
-
+//move to IEnumerator since tooLow doesn't need to be checked every frame
 	void TooLow(){
 		if(gameObject.transform.position.y < -100){
 			currentHP.listValue[unitID] = 0;

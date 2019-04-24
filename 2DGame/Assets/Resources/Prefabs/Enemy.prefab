@@ -115,7 +115,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 3.99999
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 3
@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 11400000, guid: 1c41b0b5e31beb24484dfb4ca90623e5, type: 2}
+  attacker: {fileID: 0}
   timeToAttack: 0
   attackCooldown: 0
   attackReach: {fileID: 4274751967592380}
@@ -205,6 +206,7 @@ MonoBehaviour:
   unitDirMod: 1
   currentHP: {fileID: 11400000, guid: f6d7c65932946754cb569a165fe4c637, type: 2}
   collectsToDrop: {fileID: 11400000, guid: 68b2183375d2ec44db3403eb1c1e745c, type: 2}
+  knockbackTime: 1
   nearEdge: 0
   groundLayer:
     serializedVersion: 2
