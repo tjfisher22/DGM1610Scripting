@@ -44,7 +44,7 @@ public class MeleeAttacks : MonoBehaviour {
 				Debug.Log("Attacked");
 				Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackReach.position, attackSize, enemyLayer);
 				for (int i = 0; i< enemiesToDamage.Length; i++){
-					enemiesToDamage[i].GetComponent<UnitControl>().TakeDamage(damage,gameObject.transform.localScale.x);
+					enemiesToDamage[i].GetComponent<UnitControl>().TakeDamage(damage,gameObject.transform.localScale.x,weapon.knockbackTime);
 				}
 				StartCoroutine(Cooldown());
 				// timeToAttack = attackCooldown;			

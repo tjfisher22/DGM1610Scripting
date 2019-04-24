@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Coin", menuName = "Collectables/Arrow")]
+[CreateAssetMenu(fileName = "New Arrow", menuName = "Collectables/Arrow")]
 public class ArrowCollect : Collectables {
 	public enum ArrowType {Normal, Fire, Ice}
 	public ArrowType arrowType;
+	public int arrowDamage;
+	public float knockBack;
+
+	//type = Collectables.CollectableType.Arrow;
 
 
 

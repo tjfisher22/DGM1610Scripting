@@ -26,7 +26,7 @@ public class UnitControl : MonoBehaviour {
 	bool sprintInput;
 
 	bool inKnockback;
-	float knockbackTime = 1.5f; //add this to unit data
+	//float knockbackTime = 1.5f; //add this to unit data
 
 	public bool nearEdge;
 
@@ -42,6 +42,7 @@ public class UnitControl : MonoBehaviour {
 		unitAnim = gameObject.GetComponent<Animator> ();
 		unitBody = gameObject.GetComponent<Rigidbody2D> ();
 		unitSprite = gameObject.GetComponent<SpriteRenderer> ();
+		collectsToDrop = unit.collectsToDrop;
 
 		unitSprite.color = unit.unitColor;
 		rightDirect = transform.localScale.x;
@@ -72,14 +73,14 @@ public class UnitControl : MonoBehaviour {
 	}
 
 
-	public void TakeDamage(int damage, float dir){//This should probably get moved to a manager, because right now it passes from MeleeAttacks to Enemy Manager
+	public void TakeDamage(int damage, float dir, float kbTime){//This should probably get moved to a manager, because right now it passes from MeleeAttacks to Enemy Manager
 										//but becasue I have this backed into the player I'd also have to create a manager for the player
 										//If I have time I'll change it up. For now, this should do.
 		if(currentHP!= null){
 			float dmg = (float)damage;
 			currentHP.listValue[unitID] -= ((dmg>unit.defense) ? dmg-unit.defense:0);
 			Debug.Log(unit.name + "Took Damage");
-			StartCoroutine(Knockback(dir));
+			StartCoroutine(Knockback(dir,kbTime));
 			if(currentHP.listValue[unitID] <=0){
 				currentHP.listValue[unitID] = 0;
 				// Debug.Log(unit.name+" Died");
@@ -141,12 +142,12 @@ public class UnitControl : MonoBehaviour {
 
 	}
 
-	public IEnumerator Knockback(float kbDir){
+	public IEnumerator Knockback(float kbDir, float kbTime){
 		inKnockback = true;
 		Debug.Log("KnockBack");
 		//gameObject.transform.localScale = new Vector2(-kbDir,transform.localScale.y);
 		unitBody.AddForce(new Vector2(kbDir, 1.5f)*1500f);
-		yield return new WaitForSeconds(knockbackTime);
+		yield return new WaitForSeconds(kbTime);
 		inKnockback = false;
 	}
 

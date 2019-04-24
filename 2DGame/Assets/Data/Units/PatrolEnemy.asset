@@ -22,3 +22,4 @@ MonoBehaviour:
   jumpHeight: 10
   unitSprite: {fileID: 0}
   unitColor: {r: 1, g: 0.6286478, b: 0, a: 1}
+  collectsToDrop: {fileID: 11400000, guid: 1a1ab8b257265174faffc4c0a257c2a6, type: 2}

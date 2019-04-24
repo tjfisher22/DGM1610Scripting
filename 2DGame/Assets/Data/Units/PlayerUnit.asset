@@ -22,4 +22,5 @@ MonoBehaviour:
   jumpHeight: 17
   unitSprite: {fileID: 0}
   unitColor: {r: 0, g: 0.1981132, b: 0, a: 1}
+  collectsToDrop: {fileID: 11400000, guid: 68b2183375d2ec44db3403eb1c1e745c, type: 2}
   playerNumber: 1

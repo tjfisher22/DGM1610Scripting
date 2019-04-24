@@ -1014,6 +1014,48 @@ MonoBehaviour:
   playerHP: {fileID: 11400000, guid: dd867da645e1591439a90448a4bf6d8f, type: 2}
   playerObj: {fileID: 1029088970}
   respawnPoint: {fileID: 18287501}
+--- !u!1001 &1751203700
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4604448453018270, guid: f3ff45a4693ca0741aa6d8db8c351089, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.1271849
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604448453018270, guid: f3ff45a4693ca0741aa6d8db8c351089, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604448453018270, guid: f3ff45a4693ca0741aa6d8db8c351089, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -5.3365808
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604448453018270, guid: f3ff45a4693ca0741aa6d8db8c351089, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604448453018270, guid: f3ff45a4693ca0741aa6d8db8c351089, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604448453018270, guid: f3ff45a4693ca0741aa6d8db8c351089, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604448453018270, guid: f3ff45a4693ca0741aa6d8db8c351089, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604448453018270, guid: f3ff45a4693ca0741aa6d8db8c351089, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f3ff45a4693ca0741aa6d8db8c351089, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1785270645
 GameObject:
   m_ObjectHideFlags: 0

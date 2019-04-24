@@ -20,6 +20,7 @@ public class CollectableControl : MonoBehaviour {
 	void Start () {
 		//pickedUp = false;
 		pickUp = possiblePickUps.listValue[pickUpID];
+		Debug.Log("Collectable name is: "+pickUp.name); //something here not working right
 		//set up the sprite for the object
 		//This might be better in collectableManager
 		collectSprite = gameObject.GetComponent<SpriteRenderer> ();

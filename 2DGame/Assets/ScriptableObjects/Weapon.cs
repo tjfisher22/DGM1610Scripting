@@ -11,6 +11,7 @@ public class Weapon : ScriptableObject {
 	
 	public int damage;
 	public float attackCooldown;
+	public float knockbackTime;
 
 	public float weaponSize;
 	public float weaponReach;

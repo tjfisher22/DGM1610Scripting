@@ -29,6 +29,8 @@ public abstract class Unit : ScriptableObject {
 
 	public Color unitColor = Color.black;
 
+	public CollectListVariable collectsToDrop;
+
 	//figure out if you can save animator controllers to SOs
 
 
