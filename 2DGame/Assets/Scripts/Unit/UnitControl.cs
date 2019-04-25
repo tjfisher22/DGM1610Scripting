@@ -11,7 +11,7 @@ public class UnitControl : MonoBehaviour {
 
 	public HPListVariable currentHP;
 	public CollectListVariable collectsToDrop;
-	public Transform unitCheck;
+
 
 	//public int currentHealth;
 	
@@ -38,6 +38,7 @@ public class UnitControl : MonoBehaviour {
 	public LayerMask groundLayer;
 	public LayerMask unitLayer;
 	public Transform edgeCheck;
+	public Transform unitCheck;
 
 	// Use this for initialization
 	void Start () {
@@ -56,7 +57,7 @@ public class UnitControl : MonoBehaviour {
 		Walk();
 		TooLow();
 		IsFalling();
-		IsNearEnemy();
+		//IsNearEnemy();
 	}
 
 	public bool IsEdge(float speed){

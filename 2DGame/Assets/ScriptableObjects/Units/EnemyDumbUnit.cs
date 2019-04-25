@@ -22,6 +22,8 @@ public class EnemyDumbUnit : Unit {
 			unitAI.GetComponent<UnitControl>().Control(1f, false, false);
 		}
 		//melee attack
+		//call unitAI.IsNearEnemy here
+
 		if(true){
 			unitAI.GetComponent<MeleeAttacks>().MeleeAttackAnimation();
 		}

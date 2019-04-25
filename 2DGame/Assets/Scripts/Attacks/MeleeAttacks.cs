@@ -24,40 +24,43 @@ public class MeleeAttacks : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		attackCooldown = weapon.attackCooldown;
-		attackSize = weapon.weaponSize;
-		onCooldown = false;	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	}
 	public void MeleeAttackAnimation(){
+		if(!onCooldown){
 		attackerAnim = gameObject.GetComponent<Animator>();
 		attackerAnim.SetTrigger("slash");
+		StartCoroutine(Cooldown());
+		}
 	}
 	public void MeleeAttack(){
-		if(!onCooldown){
-				//attackerAnim = gameObject.GetComponent<Animator>();
-				//attackerAnim.SetTrigger("slash");
-				damage = weapon.damage + attacker.strength;
-				Debug.Log("Attacked");
-				Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackReach.position, attackSize, enemyLayer);
-				for (int i = 0; i< enemiesToDamage.Length; i++){
-					enemiesToDamage[i].GetComponent<UnitControl>().TakeDamage(damage,gameObject.transform.localScale.x,weapon.knockbackTime);
-				}
-				StartCoroutine(Cooldown());
-				// timeToAttack = attackCooldown;			
-		}
-		else{
-			//timeToAttack--;
-		}
+		//unused
+
+		// if(!onCooldown){
+		// 		//attackerAnim = gameObject.GetComponent<Animator>();
+		// 		//attackerAnim.SetTrigger("slash");
+		// 		damage = weapon.damage + attacker.strength;
+		// 		//Debug.Log("Attacked");
+		// 		Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackReach.position, attackSize, enemyLayer);
+		// 		for (int i = 0; i< enemiesToDamage.Length; i++){
+		// 			enemiesToDamage[i].GetComponent<UnitControl>().TakeDamage(damage,gameObject.transform.localScale.x,weapon.knockbackTime);
+		// 		}
+		// 		StartCoroutine(Cooldown());
+		// 		// timeToAttack = attackCooldown;			
+		// }
+		// else{
+		// 	//timeToAttack--;
+		// }
 	}
 
 	private IEnumerator Cooldown(){
 		onCooldown = true;
 
-		yield return new WaitForSeconds(attackCooldown);
+		yield return new WaitForSeconds(weapon.attackCooldown);
 
 		onCooldown = false;
 	}

@@ -7,13 +7,16 @@ public class Weapon : ScriptableObject {
 
 	public string weaponName = "New Weapon";
 	
-	public Sprite weaponSprite;
+	public Sprite sprite;
+	public Color color = Color.black;
 	
 	public int damage;
 	public float attackCooldown;
 	public float knockbackTime;
+	public float knockBack;
 
-	public float weaponSize;
-	public float weaponReach;
+
+	// public float weaponSize;
+	// public float weaponReach;
 
 }

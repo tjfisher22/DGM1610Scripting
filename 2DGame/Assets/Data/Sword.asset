@@ -9,11 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ca2e7ab8709ec643853f5184363feae, type: 3}
-  m_Name: Dagger
+  m_Name: Sword
   m_EditorClassIdentifier: 
-  weaponName: New Weapon
-  weaponSprite: {fileID: 0}
-  damage: 1
-  attackCooldown: 1
-  weaponSize: 2
-  weaponReach: 2
+  weaponName: Sword
+  sprite: {fileID: 21300000, guid: ab59917f71f87604ab593586708246c0, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 1}
+  damage: 5
+  attackCooldown: 1.5
+  knockbackTime: 0
+  knockBack: 1
