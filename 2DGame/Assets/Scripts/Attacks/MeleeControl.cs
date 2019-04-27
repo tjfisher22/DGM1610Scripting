@@ -11,7 +11,8 @@ public class MeleeControl : MonoBehaviour {
 	void Start () {
 		weaponSprite = gameObject.GetComponent<SpriteRenderer> ();
 		weaponSprite.sprite = weapon.sprite;
-		weaponSprite.color = weapon.color;
+		//weaponSprite.color = weapon.color;
+		weaponSprite.color = unit.unitColor;
 		weaponSprite.sortingOrder = 100;
 		
 	}

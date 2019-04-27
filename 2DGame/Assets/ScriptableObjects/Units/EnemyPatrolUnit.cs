@@ -22,7 +22,7 @@ public class EnemyPatrolUnit : Unit {
 		//jumping
 		//melee attack
 		if(unitAI.FacingUnit()==UnitAI.NearbyUnitType.Player){
-			unitAI.GetComponent<MeleeAttacks>().MeleeAttack();
+			unitAI.GetComponent<MeleeAttacks>().MeleeAttackAnimation();
 		}
 
 		

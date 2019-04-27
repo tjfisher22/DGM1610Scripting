@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHPs: {fileID: 11400000, guid: f6d7c65932946754cb569a165fe4c637, type: 2}
   enemyTypes: {fileID: 11400000, guid: f2151a5aa4aa44848a02fd9994fe310d, type: 2}
-  enemyPrefab: {fileID: 4900701957240700, guid: 08fcda27c0027e0478de6b269d786daf,
+  enemyPrefab: {fileID: 4408852825563372, guid: ca713ead15758cd4d987013f001aa688,
     type: 2}
   collectPrefab: {fileID: 4660083409022234, guid: c02dc0c137bf1264e8c5307c6f400b44,
     type: 2}
@@ -775,6 +775,9 @@ MonoBehaviour:
   unitDirMod: 1
   currentHP: {fileID: 11400000, guid: dd867da645e1591439a90448a4bf6d8f, type: 2}
   collectsToDrop: {fileID: 11400000, guid: 68b2183375d2ec44db3403eb1c1e745c, type: 2}
+  knockbackXMod: 1
+  knockbackYMod: 1
+  knockbackTimeMod: 1
   nearEdge: 0
   groundLayer:
     serializedVersion: 2

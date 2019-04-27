@@ -16,6 +16,9 @@ public class EnemyDumbUnit : Unit {
 		//movement
 		//jumping
 		if(unitAI.FacingUnit()!=UnitAI.NearbyUnitType.Player){
+			if(unitAI.FacingUnit()==UnitAI.NearbyUnitType.Enemy){
+				unitAI.GetComponent<UnitControl>().Jump();
+			}
 			if(unitAI.GetComponent<UnitControl>().IsEdge(speed)){
 				unitAI.GetComponent<UnitControl>().Jump();
 			}
@@ -23,11 +26,12 @@ public class EnemyDumbUnit : Unit {
 				unitAI.GetComponent<UnitControl>().Control(speed, false, false);
 			}
 		}
-		else{unitAI.GetComponent<UnitControl>().Control(0, false, false); }
+		
 		//melee attack
 		//call unitAI.IsNearEnemy here
 
 		if(unitAI.FacingUnit()==UnitAI.NearbyUnitType.Player){
+			unitAI.GetComponent<UnitControl>().Control(0, false, false);
 			unitAI.GetComponent<MeleeAttacks>().MeleeAttackAnimation();
 		}
 	}
