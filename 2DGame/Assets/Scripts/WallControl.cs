@@ -11,7 +11,7 @@ public class WallControl : MonoBehaviour {
 		//Debug.Log("Layer Name" + LayerMask.LayerToName(layersToKnockBack));
 		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy"){
 			Debug.Log("Worked");
-			other.gameObject.GetComponent<UnitControl>().TakeDamage(0,knockbackDirection,1.5f);
+			other.gameObject.GetComponent<UnitControl>().TakeDamage(0,knockbackDirection,.75f);
 		}
 	}
 }

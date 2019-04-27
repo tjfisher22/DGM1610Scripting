@@ -11,7 +11,9 @@ public class UnitControl : MonoBehaviour {
 
 	public HPListVariable currentHP;
 	public CollectListVariable collectsToDrop;
-
+	public float knockbackXMod = 1;
+	public float knockbackYMod = 1;
+	public float knockbackTimeMod = 1;
 
 	//public int currentHealth;
 	
@@ -68,32 +70,14 @@ public class UnitControl : MonoBehaviour {
 		}
 		else return false;
 	}
-	public bool IsNearEnemy(){//need to update
-		Collider2D[] unitColliders = Physics2D.OverlapCircleAll(unitCheck.position, .5f, unitLayer);
-		if(unitColliders.Length == 0){
-			for (int i = 0; i< unitColliders.Length; i++){
-					if(unitColliders[i].tag == "Player"){
-						//melee attack
-					}
-					if(unitColliders[i].tag == "Enemy"){
-						//Enemy near
-					}
-					//unitColliders[i].GetComponent<UnitControl>().TakeDamage(damage,gameObject.transform.localScale.x,weapon.knockbackTime);
-				}
-			return true;
-		}
-		else return false;
-	}
-
-
-	public void TakeDamage(int damage, float dir, float kbTime){//This should probably get moved to a manager, because right now it passes from MeleeAttacks to Enemy Manager
-										//but becasue I have this backed into the player I'd also have to create a manager for the player
+	public void TakeDamage(int damage, float dir, float kbStr){//This should probably get moved to a manager, because right now it passes from MeleeAttacks to Enemy Manager
+										//but becasue I have this baked into the player I'd also have to create a manager for the player
 										//If I have time I'll change it up. For now, this should do.
 		if(currentHP!= null){
 			float dmg = (float)damage;
 			currentHP.listValue[unitID] -= ((dmg>unit.defense) ? dmg-unit.defense:0);
 			Debug.Log(unit.name + "Took Damage");
-			StartCoroutine(Knockback(dir,kbTime));
+			StartCoroutine(Knockback(dir,kbStr));
 			if(currentHP.listValue[unitID] <=0){
 				currentHP.listValue[unitID] = 0;
 				// Debug.Log(unit.name+" Died");
@@ -155,12 +139,12 @@ public class UnitControl : MonoBehaviour {
 
 	}
 
-	public IEnumerator Knockback(float kbDir, float kbTime){
+	public IEnumerator Knockback(float kbDir, float kbStr){
 		inKnockback = true;
 		Debug.Log("KnockBack");
 		//gameObject.transform.localScale = new Vector2(-kbDir,transform.localScale.y);
-		unitBody.AddForce(new Vector2(kbDir, 1f)*1750f);
-		yield return new WaitForSeconds(kbTime);
+		unitBody.AddForce(new Vector2(kbDir*kbStr*knockbackXMod, kbStr*knockbackYMod)*1750f);
+		yield return new WaitForSeconds(kbStr*knockbackTimeMod);
 		inKnockback = false;
 	}
 
