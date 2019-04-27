@@ -56,6 +56,7 @@ public class EnemyManager : MonoBehaviour {
 			//might be able to condense this by having a function on the unit assign all the data on instantiation
 			obj.GetComponent<UnitControl>().unit = enemyTypes.listValue[enemyChoice];
 			obj.GetComponent<UnitAI>().unit = enemyTypes.listValue[enemyChoice];
+			//obj.GetComponent<MeleeControl>().unit = enemyTypes.listValue[enemyChoice];
 			obj.GetComponent<MeleeAttacks>().attacker = enemyTypes.listValue[enemyChoice];
 			//Debug.Log(obj);
 			enemyHPs.listValue.Add(enemyPrefab.gameObject.GetComponent<UnitControl>().unit.maxHealth);

@@ -6,7 +6,7 @@ public class UnitControl : MonoBehaviour {
 
 	public Unit unit;
 	public int unitID;
-	[HideInInspector]
+	//[HideInInspector]
 	public int unitDirMod = 1;
 
 	public HPListVariable currentHP;
@@ -76,7 +76,7 @@ public class UnitControl : MonoBehaviour {
 		if(currentHP!= null){
 			float dmg = (float)damage;
 			currentHP.listValue[unitID] -= ((dmg>unit.defense) ? dmg-unit.defense:0);
-			Debug.Log(unit.name + "Took Damage");
+			//Debug.Log(unit.name + "Took Damage");
 			StartCoroutine(Knockback(dir,kbStr));
 			if(currentHP.listValue[unitID] <=0){
 				currentHP.listValue[unitID] = 0;
@@ -104,7 +104,6 @@ public class UnitControl : MonoBehaviour {
 		//Determine which movement speed and animation cycle should be applied
 		if(sneakInput){ 
 			unitSpeed = sneakSpeed;
-
 		}
 		else if(sprintInput){
 			unitSpeed = sprintSpeed;
