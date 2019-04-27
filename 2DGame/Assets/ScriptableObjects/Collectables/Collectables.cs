@@ -8,6 +8,7 @@ public abstract class Collectables : ScriptableObject {
 	public string name = "New Collectable";
 	public Sprite sprite;
 	public int amount;
+	public Inventory playerInventory;
 	//move to coinsSO
 	//public int cValue;
 	public CollectableType type;

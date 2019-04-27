@@ -12,6 +12,7 @@ public abstract class Unit : ScriptableObject {
 
 
 	public new string name;
+	public string enemyTag;
 
 	public int maxHealth;
 	//Not smart to store here, have current health built into floatvars and prefabs
@@ -30,11 +31,5 @@ public abstract class Unit : ScriptableObject {
 	public Color unitColor = Color.black;
 
 	public CollectListVariable collectsToDrop;
-		
-
 	//figure out if you can save animator controllers to SOs
-	
-
-
-	
 }

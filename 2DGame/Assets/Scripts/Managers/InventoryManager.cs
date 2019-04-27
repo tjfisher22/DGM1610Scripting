@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour {
 
-	public Inventory inven;
+	public Inventory playerInventory;
 	// Use this for initialization
 	void Start () {
 		
@@ -15,13 +15,15 @@ public class InventoryManager : MonoBehaviour {
 		
 	}
 
-	public void addItem(Collectables item){
-		//find if item is in list
-			//if so find it's index
-				//and add to it's quantity
-		//if not 
-			//create new item slot  //limit max?
-				//add quantity
+	public void addItem(Collectables item, int amount){
+		if(playerInventory.listValue.Contains(item)){//find if item is in list
+			int inventoryIndex = playerInventory.listValue.FindIndex(x => x.Equals(item));//if so find it's index
+			playerInventory.listValue2[inventoryIndex]+=amount;//and add to it's quantity
+		}
+		else{//if not 
+			playerInventory.listValue.Add(item);//create new item slot  //limit max?
+			playerInventory.listValue2.Add(amount);	//add quantity
+		}
 
 	}
 
