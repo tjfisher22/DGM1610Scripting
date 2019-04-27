@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitAI : MonoBehaviour {
+	public enum NearbyUnitType {None, Enemy, Player};
 
 	public Unit unit;
-	public LayerMask unitLayer;
+	public LayerMask unitCheckLayer;
 	public Transform unitCheck;
+	[HideInInspector]
+	public NearbyUnitType nearUnit;
 
 	// Use this for initialization
 	void Start () {
@@ -19,21 +22,22 @@ public class UnitAI : MonoBehaviour {
 	}
 
 
-	public bool IsNearEnemy(){//need to update
-		Collider2D[] unitColliders = Physics2D.OverlapCircleAll(unitCheck.position, .5f, unitLayer);
-		if(unitColliders.Length == 0){
+	public NearbyUnitType FacingUnit(){
+		Collider2D[] unitColliders = Physics2D.OverlapCircleAll(unitCheck.position, .5f, unitCheckLayer);
+		if(unitColliders.Length != 0){
 			for (int i = 0; i< unitColliders.Length; i++){
 					if(unitColliders[i].tag == "Player"){
-						//melee attack
-						//maybe do enum?
+						nearUnit = NearbyUnitType.Player;
+						break;//break out of for loop since the player is most important
+						//as in if there is a player and an enemy I want them to focus on the player
 					}
 					if(unitColliders[i].tag == "Enemy"){
-						//Enemy near
+						nearUnit = NearbyUnitType.Enemy;
 					}
-					//unitColliders[i].GetComponent<UnitControl>().TakeDamage(damage,gameObject.transform.localScale.x,weapon.knockbackTime);
-				}
-			return true;
+				}			
 		}
-		else return false;
+		else {nearUnit = NearbyUnitType.None;}
+		return nearUnit;
 	}
+	
 }

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Name: PatrolEnemy
   m_EditorClassIdentifier: 
   name: Patroller
+  enemyTag: Player
   maxHealth: 25
   strength: 15
   defense: 5
   hostile: 1
-  speed: 3
+  speed: 2
   sprintModifier: 2
   sneakModifier: 0.5
   jumpHeight: 10

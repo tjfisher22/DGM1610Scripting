@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MeleeControl : MonoBehaviour {
+	public Unit unit;
 	public Weapon weapon;
 	private SpriteRenderer weaponSprite;
+	//public string enemyTag;
 
 	void Start () {
 		weaponSprite = gameObject.GetComponent<SpriteRenderer> ();
@@ -13,13 +15,12 @@ public class MeleeControl : MonoBehaviour {
 		weaponSprite.sortingOrder = 100;
 		
 	}
-	void OnCollisionEnter2D(Collision2D other){
+	void OnTriggerEnter2D(Collider2D other){ //this is broken
 		//Debug.Log(other.gameObject);
 		//Debug.Log("Layer Name" + LayerMask.LayerToName(layersToKnockBack));
 		//should probable change this to a trigger enter
-		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy"){
-			Debug.Log("Worked");
-			other.gameObject.GetComponent<UnitControl>().TakeDamage(weapon.damage,-gameObject.transform.localScale.x,weapon.knockBack);
+		if(other.gameObject.tag == unit.enemyTag){
+			other.gameObject.GetComponent<UnitControl>().TakeDamage(weapon.damage+unit.strength,this.transform.parent.gameObject.transform.localScale.x,weapon.knockBack);
 		}
 	}
 }

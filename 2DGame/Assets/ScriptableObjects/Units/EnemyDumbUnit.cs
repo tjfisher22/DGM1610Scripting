@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "New Enemy",menuName="Unit/Dumb Enemy")]
 public class EnemyDumbUnit : Unit {
-	Unit unitType;
+	Unit unitType; //why is this here?
 	// [Range(0, 10)]
 	// public float idleTime;
 	// [Range(0, 10)]
@@ -15,16 +15,19 @@ public class EnemyDumbUnit : Unit {
 		unitType = unitAI.GetComponent<UnitControl>().unit; 
 		//movement
 		//jumping
-		if(unitAI.GetComponent<UnitControl>().IsEdge(speed)){
-			unitAI.GetComponent<UnitControl>().Jump();
+		if(unitAI.FacingUnit()!=UnitAI.NearbyUnitType.Player){
+			if(unitAI.GetComponent<UnitControl>().IsEdge(speed)){
+				unitAI.GetComponent<UnitControl>().Jump();
+			}
+			else{
+				unitAI.GetComponent<UnitControl>().Control(speed, false, false);
+			}
 		}
-		else{
-			unitAI.GetComponent<UnitControl>().Control(1f, false, false);
-		}
+		else{unitAI.GetComponent<UnitControl>().Control(0, false, false); }
 		//melee attack
 		//call unitAI.IsNearEnemy here
 
-		if(true){
+		if(unitAI.FacingUnit()==UnitAI.NearbyUnitType.Player){
 			unitAI.GetComponent<MeleeAttacks>().MeleeAttackAnimation();
 		}
 	}

@@ -11,14 +11,9 @@ public class ArrowCollect : Collectables {
 
 	//type = Collectables.CollectableType.Arrow;
 
-
-
-	// Put spawning in collectableManager
-	// public override void Spawn(CollectableAI Collect){
-
-	// }
 	public override void Collect(CollectableAI pickUp){
-			pickUp.GetComponent<CollectableControl>().CollectValues(amount);
+			//pickUp.GetComponent<CollectableControl>().CollectValues(amount);
+			pickUp.GetComponent<CollectableControl>().PickUpCollect(playerInventory);
 
 			//put collectable specific stuff here
 			//Like add powerups, add to score.

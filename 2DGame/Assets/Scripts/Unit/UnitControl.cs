@@ -159,7 +159,7 @@ public class UnitControl : MonoBehaviour {
 		inKnockback = true;
 		Debug.Log("KnockBack");
 		//gameObject.transform.localScale = new Vector2(-kbDir,transform.localScale.y);
-		unitBody.AddForce(new Vector2(kbDir, 1.5f)*1500f);
+		unitBody.AddForce(new Vector2(kbDir, 1f)*1750f);
 		yield return new WaitForSeconds(kbTime);
 		inKnockback = false;
 	}

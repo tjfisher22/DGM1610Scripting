@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: PlayerUnit
   m_EditorClassIdentifier: 
   name: Player 1
+  enemyTag: Enemy
   maxHealth: 100
   strength: 20
   defense: 0
