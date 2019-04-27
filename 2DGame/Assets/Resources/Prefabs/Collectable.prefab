@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUp: {fileID: 11400000, guid: 4e6c1bb6d7dc3074a8af96517bb7fbf0, type: 2}
+  playerInventory: {fileID: 11400000, guid: 02c5b850947a0d54995f558bd0287b6b, type: 2}
   pickUpID: 0
   possiblePickUps: {fileID: 11400000, guid: 886b9703a26fc9140b873fdf12b3bdee, type: 2}
   CollectableValue: 0

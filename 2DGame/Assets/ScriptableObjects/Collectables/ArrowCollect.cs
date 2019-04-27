@@ -12,7 +12,7 @@ public class ArrowCollect : Collectables {
 	//type = Collectables.CollectableType.Arrow;
 
 	public override void Collect(CollectableAI pickUp){
-			//pickUp.GetComponent<CollectableControl>().CollectValues(amount);
+			pickUp.GetComponent<CollectableControl>().CollectValues(amount);
 			pickUp.GetComponent<CollectableControl>().PickUpCollect(playerInventory);
 
 			//put collectable specific stuff here

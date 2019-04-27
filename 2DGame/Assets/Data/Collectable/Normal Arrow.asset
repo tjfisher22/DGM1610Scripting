@@ -14,7 +14,8 @@ MonoBehaviour:
   name: Normal Arrow
   sprite: {fileID: 21300000, guid: 24e14934aa3ed444db2e3f674c78a6eb, type: 3}
   amount: 5
-  type: 0
+  playerInventory: {fileID: 11400000, guid: 02c5b850947a0d54995f558bd0287b6b, type: 2}
+  type: 1
   color: {r: 1, g: 1, b: 1, a: 1}
   animControl: {fileID: 9100000, guid: 0498c177310d46744b5282aac7db2e62, type: 2}
   arrowType: 0

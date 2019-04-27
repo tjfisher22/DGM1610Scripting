@@ -15,7 +15,7 @@ public class CollectableControl : MonoBehaviour {
 	public int CollectableValue;
 	private SpriteRenderer collectSprite;
 	private Animator collectAnim;
-	//private int animCollectType = 1;
+	// 	private int animCollectType = 1;
 
 	public bool pickedUp;
 	
@@ -79,19 +79,20 @@ public class CollectableControl : MonoBehaviour {
 		}
 	}
 	public void PickUpCollect(Inventory playerInventory){
-		Debug.Log("Inventory");
-		switch(pickUp.type){// I don't think switch will be needed
-			case Collectables.CollectableType.Arrow:
-				AddItem(pickUp, CollectableValue);
-				
-				break;
-			// case Collectables.CollectableType.Potion:
-			// 	break;
-			default:
-				Debug.Log("NoCollectType");
-				break;
+		// Debug.Log("Inventory");
+		// switch(pickUp.type){// I don't think switch will be needed
+		// 	case Collectables.CollectableType.Arrow:
+		// 		break;
+		// 	// case Collectables.CollectableType.Potion:
+		// 	// 	break;
+		// 	default:
+		// 		Debug.Log("NoCollectType");
+		// 		break;
+		// }
+		if(pickedUp){
+			AddItem(pickUp, CollectableValue);
+			Destroy(gameObject);
 		}
-		Destroy(gameObject);
 
 	}
 	void TooLow(){
