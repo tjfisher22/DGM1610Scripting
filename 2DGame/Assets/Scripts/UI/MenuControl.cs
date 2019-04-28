@@ -17,6 +17,9 @@ public class MenuControl : MonoBehaviour {
 			if(EventSystem.current.currentSelectedGameObject.name == "StartButton"){
 		 		SceneManager.LoadScene(1);
 			}
+			if(EventSystem.current.currentSelectedGameObject.name == "QuitButton"){
+		 		Application.Quit();
+			}
 		}
 	}
 }

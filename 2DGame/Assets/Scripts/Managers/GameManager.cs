@@ -26,9 +26,11 @@ public class GameManager : MonoBehaviour {
 
 	void RespawnPlayer(){
 		if(playerHP.listValue[0]<=0){
+			
+			//gameObject.GetComponent<GameOverControl>().
 			playerObj.transform.position = respawnPoint.position;
 			playerHP.listValue[0]=player.maxHealth;
-			SceneManager.LoadScene("Game");
+			//SceneManager.LoadScene("Game");
 		
 			//StartCoroutine(WaitForRespawn());
 		}

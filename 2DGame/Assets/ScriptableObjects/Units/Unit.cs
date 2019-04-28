@@ -17,8 +17,8 @@ public abstract class Unit : ScriptableObject {
 	public int maxHealth;
 	//Not smart to store here, have current health built into floatvars and prefabs
 	//public int currentHealth;
-	public int strength;
-	public int defense;
+	public float strength;
+	public float defense;
 	public bool hostile = false;
 
 	public float speed = 10;

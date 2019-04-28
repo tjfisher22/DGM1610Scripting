@@ -4,11 +4,12 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Potion", menuName = "Collectables/Potion")]
 public class PotionCollect : Collectables {
-	public enum PotionType {Health, Speed, Jump, Strength, Defence}
+	public enum PotionType {Health, Speed, Jump, Strength, Defense}
 	public PotionType potionType;
 	//public Unit player;
 	public float duration;
 	public int cost;
+	public bool isPoison;
 	// public float potionDuration;
 	// public override float duration{
 	// 	get{

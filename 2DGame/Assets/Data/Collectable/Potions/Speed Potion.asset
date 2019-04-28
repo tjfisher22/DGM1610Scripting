@@ -20,4 +20,5 @@ MonoBehaviour:
   animControl: {fileID: 9100000, guid: 016602425991a0f46858423f425a8fff, type: 2}
   potionType: 1
   duration: 5
+  cost: 0
   tier: 2

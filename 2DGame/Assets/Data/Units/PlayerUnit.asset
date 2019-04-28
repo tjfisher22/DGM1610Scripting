@@ -21,7 +21,7 @@ MonoBehaviour:
   sprintModifier: 2
   sneakModifier: 0.5
   jumpHeight: 17
-  unitSprite: {fileID: 0}
+  unitSprite: {fileID: 21300004, guid: a42050b5f30724b4f994cd242165ec86, type: 3}
   unitColor: {r: 0, g: 0, b: 0, a: 1}
   collectsToDrop: {fileID: 11400000, guid: 68b2183375d2ec44db3403eb1c1e745c, type: 2}
   playerNumber: 1

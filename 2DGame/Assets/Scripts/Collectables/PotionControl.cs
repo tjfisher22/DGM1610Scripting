@@ -14,7 +14,7 @@ public class PotionControl : MonoBehaviour {
 	public FloatListVariable playerHealth;
 	bool potionInUse;
 	public Transform effectBar;
-	//[HideInInspector]
+	[HideInInspector]
 	PotionCollect usedPotion;
 	[HideInInspector]
 	public float priorValue = 0;
@@ -59,8 +59,9 @@ public class PotionControl : MonoBehaviour {
 		effectDuration.value = usedPotion.duration;
 
 		int tier = usedPotion.tier;
+		if(usedPotion.isPoison) tier *=-1;
 		bool healthPot = false;
-		//ADD THE EFFECT TO THE PLAYER {Health, Speed, Jump, Strength, Defence}
+		//ADD THE EFFECT TO THE PLAYER {Health, Speed, Jump, Strength, Defense}
 		switch(usedPotion.potionType){
 			case PotionCollect.PotionType.Health:
 				healthPot = true;
@@ -74,8 +75,12 @@ public class PotionControl : MonoBehaviour {
 				player.jumpHeight *=(1.5f+(float)tier/3);
 				break;
 			case PotionCollect.PotionType.Strength:
-				break;		
-			case PotionCollect.PotionType.Defence:
+				priorValue = player.strength;
+				player.strength *=(1f+(float)tier/3);
+				break;	
+			case PotionCollect.PotionType.Defense:
+				priorValue = player.defense;
+				player.defense *=(1.25f+(float)tier/3);
 				break;			
 		}
 
@@ -103,8 +108,10 @@ public class PotionControl : MonoBehaviour {
 				player.jumpHeight = priorValue;
 				break;
 			case PotionCollect.PotionType.Strength:
+				player.strength = priorValue;
 				break;		
-			case PotionCollect.PotionType.Defence:
+			case PotionCollect.PotionType.Defense:
+				player.defense = priorValue;
 				break;			
 		}
 

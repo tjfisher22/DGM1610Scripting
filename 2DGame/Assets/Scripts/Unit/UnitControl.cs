@@ -70,11 +70,11 @@ public class UnitControl : MonoBehaviour {
 		}
 		else return false;
 	}
-	public void TakeDamage(int damage, float dir, float kbStr){//This should probably get moved to a manager, because right now it passes from MeleeAttacks to Enemy Manager
+	public void TakeDamage(float damage, float dir, float kbStr){//This should probably get moved to a manager, because right now it passes from MeleeAttacks to Enemy Manager
 										//but becasue I have this baked into the player I'd also have to create a manager for the player
 										//If I have time I'll change it up. For now, this should do.
 		if(currentHP!= null){
-			float dmg = (float)damage;
+			float dmg = damage;
 			currentHP.listValue[unitID] -= ((dmg>unit.defense) ? dmg-unit.defense:0);
 			//Debug.Log(unit.name + "Took Damage");
 			StartCoroutine(Knockback(dir,kbStr));

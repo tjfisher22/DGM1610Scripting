@@ -13,8 +13,17 @@ public class InventoryManager : MonoBehaviour {
 
 
 	public Inventory playerInventory;
+	bool scrollUp = false;
+	public CollectVariable selectedPotion;
+
+	List<Collectables> inventoryPotions = new List<Collectables>();
+	int potIndex = 1; //set to 1 because I initialize the UI selection using scrollItem(down)
+	List<Collectables> inventoryArrows = new List<Collectables>();
+	int arrIndex = 1;
+
 	// Use this for initialization
 	void Start () {
+		ScrollItem();
 		
 	}
 	
@@ -23,10 +32,21 @@ public class InventoryManager : MonoBehaviour {
 		if(Input.GetButtonDown("Inventory")){
 			//open inventory
 		}
+		if(Input.GetAxis("Mouse ScrollWheel")<0f){
+			scrollUp = false;
+			ScrollItem();
+		}
+		else if(Input.GetAxis("Mouse ScrollWheel")>0f){
+			scrollUp = true;
+			ScrollItem();
+		}
+		else{
+
+		}
 		
 	}
 
-	public void addItem(Collectables item, int amount){
+	public void addItem(Collectables item, int amount){  //overload this with a list as well
 		if(playerInventory.listValue.Contains(item)){//find if item is in list
 			int inventoryIndex = playerInventory.listValue.FindIndex(x => x.Equals(item));//if so find it's index
 			playerInventory.listValue2[inventoryIndex]+=amount;//and add to it's quantity
@@ -37,7 +57,25 @@ public class InventoryManager : MonoBehaviour {
 		}
 
 	}
+	public void ScrollItem(){
+		//use if statment here to brance off into arrows
+		for(int i = 0; i<playerInventory.listValue.Count; i++){
+			if(playerInventory.listValue[i].type == Collectables.CollectableType.Potion){
+				inventoryPotions.Add(playerInventory.listValue[i]);
+			}
+		}
+		if(scrollUp){
+			//Debug.Log("Index " + potIndex + " Count " + inventoryPotions.Count + " Item " + );
+			potIndex++;
+			if(inventoryPotions.Count == potIndex) potIndex = 0;
+		}
+		else{
+			potIndex--;
+			if(potIndex == 0) potIndex = inventoryPotions.Count-1;
+		}
+		selectedPotion.collectable = inventoryPotions[potIndex];
 
+	}
 	public void removeItem(){
 
 	}
@@ -46,7 +84,4 @@ public class InventoryManager : MonoBehaviour {
 
 	}
 
-	public void useItem(){
-
-	}
 }

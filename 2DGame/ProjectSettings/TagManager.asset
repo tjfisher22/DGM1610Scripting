@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Collectable
   - Enemy
+  - ShowOnPause
+  - ShowOnDie
   layers:
   - Default
   - TransparentFX
