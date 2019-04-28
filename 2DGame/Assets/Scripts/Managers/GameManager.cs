@@ -20,6 +20,15 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		//Scene scene = SceneManager.GetActiveScene();
 		playerHP.listValue[0]=player.maxHealth;
+		inventory.GetComponent<InventoryManager>().playerInventory.listValue.Clear();
+		inventory.GetComponent<InventoryManager>().playerInventory.listValue2.Clear();
+		//give 10 coins 
+		gameObject.GetComponent<GameOverControl>().playerCoins.value = startingCoins;
+		//maybe a few arrows
+		inventory.GetComponent<InventoryManager>().AddItem(startingItem, startingItem.amount);
+		//reset health
+		playerHP.listValue[0]=player.maxHealth;
+		//StartGame();
 	}
 	void Update(){
 		
@@ -31,12 +40,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void RespawnPlayer(){
-		if(playerHP.listValue[0]<=0){
 			playerObj.transform.position = respawnPoint.position;
 			playerHP.listValue[0]=player.maxHealth;
 			ShowPlayer();
 			SceneManager.LoadScene("Game");
-		}
 	}
 	public void HidePlayer(){
 		playerObj.GetComponent<SpriteRenderer>().enabled =false;
@@ -47,14 +54,15 @@ public class GameManager : MonoBehaviour {
 	public void StartGame(){
 		//for(int i = 0; )
 		//clear inventory
-		inventory.GetComponent<InventoryManager>().playerInventory.listValue.Clear();
-		inventory.GetComponent<InventoryManager>().playerInventory.listValue2.Clear();
-		//give 10 coins 
-		gameObject.GetComponent<GameOverControl>().playerCoins.value = startingCoins;
-		//maybe a few arrows
-		inventory.GetComponent<InventoryManager>().AddItem(startingItem, startingItem.amount);
-		//reset health
-		playerHP.listValue[0]=player.maxHealth;
+	
+		// inventory.GetComponent<InventoryManager>().playerInventory.listValue.Clear();
+		// inventory.GetComponent<InventoryManager>().playerInventory.listValue2.Clear();
+		// //give 10 coins 
+		// gameObject.GetComponent<GameOverControl>().playerCoins.value = startingCoins;
+		// //maybe a few arrows
+		// inventory.GetComponent<InventoryManager>().AddItem(startingItem, startingItem.amount);
+		// //reset health
+		// playerHP.listValue[0]=player.maxHealth;
 		RespawnPlayer();
 	}
 

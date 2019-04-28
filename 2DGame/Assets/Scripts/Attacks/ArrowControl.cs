@@ -19,7 +19,8 @@ public class ArrowControl : MonoBehaviour {
 		//Debug.Log("Layer Name" + LayerMask.LayerToName(layersToKnockBack));
 		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy"){
 			//Debug.Log("Worked");
-			other.gameObject.GetComponent<UnitControl>().TakeDamage(arrow.arrowDamage,-gameObject.transform.localScale.x,arrow.knockBack);
+			other.gameObject.GetComponent<UnitControl>().TakeDamage(arrow.arrowDamage,gameObject.transform.localScale.x,arrow.knockBack);
+			Destroy(gameObject);
 		}
 	}
 }

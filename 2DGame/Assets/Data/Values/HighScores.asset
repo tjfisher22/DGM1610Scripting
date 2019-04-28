@@ -13,5 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: List of Highscores
   value: 0
-  listValue: []
-  listValue2: []
+  listValue:
+  - Joe
+  listValue2:
+  - 25

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameOverControl : MonoBehaviour {
 	GameObject[] deathObjects;
@@ -9,13 +10,16 @@ public class GameOverControl : MonoBehaviour {
 	public FloatVariable coinsRequired;
 	public FloatVariable playerCoins;
 	FloatListVariable playerHP;
+	//public Button continueButton;
+	
 
-	public StringListVariable highscores;
+	
 
 	public int coinIncrease = 10;
 
 	// Use this for initialization
 	void Start () {
+	
 		playerHP = gameObject.GetComponent<GameManager>().playerHP;
 		Time.timeScale = 1;
 		deathObjects = GameObject.FindGameObjectsWithTag("ShowOnDie");
@@ -26,10 +30,10 @@ public class GameOverControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(playerHP.listValue[0]<=0){
-			Time.timeScale = 0;
 			gameObject.GetComponent<GameManager>().HidePlayer();
 			ShowGameOver();
 		}
+
 	}
 
 	void ShowGameOver(){
@@ -52,8 +56,9 @@ public class GameOverControl : MonoBehaviour {
 			coinsRequired.value += coinIncrease;
 		}
 		else{
+			// GetComponent<Button>().interactable = false;
 			Debug.Log("No money?");//change this to an actual UI thing later
-			GiveScore();
+			SaveScore();
 		}
 		//color button red if not enough coins?
 	}
@@ -62,12 +67,12 @@ public class GameOverControl : MonoBehaviour {
 		gameObject.GetComponent<GameManager>().StartGame();
 	}
 
-	public void GiveScore(){
-		//popup box for name;
-		string name = "Joe";
-		highscores.listValue.Add(name);
-		highscores.listValue2.Add(playerCoins.value);
-		Debug.Log("Congrats, you got " + playerCoins.value +" coins for your retirement");//change this to an actual UI thing later
+	public void SaveScore(){
+		// string name = "Joe";
+		// highscores.listValue.Add(HSName.text);
+		// highscores.listValue2.Add(playerCoins.value);
+		//Debug.Log("Congrats, you got " + playerCoins.value +" coins for your retirement");//change this to an actual UI thing later
+		SceneManager.LoadScene("EndScene");
 
 	}
 }
