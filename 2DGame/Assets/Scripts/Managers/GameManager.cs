@@ -28,6 +28,12 @@ public class GameManager : MonoBehaviour {
 		inventory.GetComponent<InventoryManager>().AddItem(startingItem, startingItem.amount);
 		//reset health
 		playerHP.listValue[0]=player.maxHealth;
+		player.jumpHeight = 17;
+		player.maxHealth = 100;
+		player.strength =20;
+		player.defense = 10;
+		player.speed =10;
+		
 		//StartGame();
 	}
 	void Update(){
