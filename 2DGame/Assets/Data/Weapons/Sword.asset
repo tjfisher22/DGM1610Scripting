@@ -14,6 +14,6 @@ MonoBehaviour:
   weaponName: Sword
   sprite: {fileID: 21300000, guid: ab59917f71f87604ab593586708246c0, type: 3}
   color: {r: 0, g: 0, b: 0, a: 1}
-  damage: 5
+  damage: 6
   attackCooldown: 1.5
-  knockBack: 1
+  knockBack: 0.5

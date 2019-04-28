@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyTag: Enemy
   maxHealth: 100
   strength: 20
-  defense: 0
+  defense: 10
   hostile: 0
   speed: 10
   sprintModifier: 2
