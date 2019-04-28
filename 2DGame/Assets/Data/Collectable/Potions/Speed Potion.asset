@@ -19,5 +19,5 @@ MonoBehaviour:
   color: {r: 0.0039215684, g: 0.2503773, b: 1, a: 1}
   animControl: {fileID: 9100000, guid: 016602425991a0f46858423f425a8fff, type: 2}
   potionType: 1
-  potionDuration: 5
+  duration: 5
   tier: 2

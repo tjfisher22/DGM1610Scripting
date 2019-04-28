@@ -5,7 +5,7 @@ using UnityEngine;
 
 // [System.Serializable]
 //Should probably just convert the 2d list into a dictionary instead
-public  class ListVariable<T,Y> : ScriptableObject {
+public  class ListVariable<T,Y> : ScriptableObject { //need to add a plus button for quicker list lenghtening in the editor
 
 	public string description;
 	public float value;

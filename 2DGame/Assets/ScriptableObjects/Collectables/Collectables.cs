@@ -9,8 +9,7 @@ public abstract class Collectables : ScriptableObject {
 	public Sprite sprite;
 	public int amount = 1;
 	public Inventory playerInventory;
-	//move to coinsSO
-	//public int cValue;
+
 	public CollectableType type;
 	public Color color = Color.black;
 	public RuntimeAnimatorController animControl;
@@ -19,6 +18,7 @@ public abstract class Collectables : ScriptableObject {
 	//public virtual void Initialize(UnitAI unit){}
 	// public abstract void Spawn(CollectableAI Collect);
 	public abstract void Collect(CollectableAI pickUp);
-	public virtual float duration{get;}
+	//public virtual float duration{get;}
+
 
 }

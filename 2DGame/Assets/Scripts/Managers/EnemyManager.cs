@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour {
 
-	public HPListVariable enemyHPs;
+	public FloatListVariable enemyHPs;
 	public UnitListVariable enemyTypes;
 	public Transform enemyPrefab;
 	public Transform collectPrefab;

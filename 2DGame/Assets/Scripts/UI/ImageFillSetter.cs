@@ -2,7 +2,7 @@
 using UnityEngine;
 
 public class ImageFillSetter : MonoBehaviour {
-	public HPListVariable variable;
+	public FloatListVariable variable;
 
 
 	public Image image;

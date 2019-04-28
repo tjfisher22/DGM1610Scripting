@@ -9,7 +9,7 @@ public class UnitControl : MonoBehaviour {
 	//[HideInInspector]
 	public int unitDirMod = 1;
 
-	public HPListVariable currentHP;
+	public FloatListVariable currentHP;
 	public CollectListVariable collectsToDrop;
 	public float knockbackXMod = 1;
 	public float knockbackYMod = 1;

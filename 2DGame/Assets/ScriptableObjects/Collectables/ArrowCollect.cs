@@ -8,6 +8,7 @@ public class ArrowCollect : Collectables {
 	public ArrowType arrowType;
 	public int arrowDamage;
 	public float knockBack;
+	public int cost;
 
 	//type = Collectables.CollectableType.Arrow;
 

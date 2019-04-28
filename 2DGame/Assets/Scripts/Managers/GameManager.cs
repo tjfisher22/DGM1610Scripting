@@ -6,9 +6,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
 	public Unit player;
-	public HPListVariable playerHP;
+	public FloatListVariable playerHP;
 	public GameObject playerObj;
 	public Transform respawnPoint;
+	public GameObject inventory;
 
 
 
@@ -19,17 +20,26 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
 		RespawnPlayer();
 	}
 
 	void RespawnPlayer(){
 		if(playerHP.listValue[0]<=0){
-			//reload scene?
 			playerObj.transform.position = respawnPoint.position;
 			playerHP.listValue[0]=player.maxHealth;
 			SceneManager.LoadScene("Game");
+		
+			//StartCoroutine(WaitForRespawn());
 		}
-
 	}
+	// IEnumerator WaitForRespawn(){
+
+	// 		//yield return new WaitForSeconds(3f);//inventory.GetComponent<PotionControl>()usedPotion.duration);
+	// 		//reload scene?
+	// 		playerObj.transform.position = respawnPoint.position;
+	// 		playerHP.listValue[0]=player.maxHealth;
+	// 		SceneManager.LoadScene("Game");
+		
+	// }
 }

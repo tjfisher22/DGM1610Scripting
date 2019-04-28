@@ -8,8 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ccbb6530cf43cc42a636524a93f03d6, type: 3}
-  m_Name: EffectDuration
+  m_Script: {fileID: 11500000, guid: c12e87dbda0edc04b8c7c7632dc23e13, type: 3}
+  m_Name: Effect Duration
   m_EditorClassIdentifier: 
-  description: How long effect is in duration
-  value: 0
+  description: Total and current remaining time for an effect
+  value: 1
+  listValue:
+  - 0.016768094

@@ -43,9 +43,9 @@ public class PlayerUnit : Unit {
 		}
 
 		//potion usage
-		if(Input.GetButtonDown(quickItem)){
-			unit.GetComponent<PotionControl>().UsePotion();
-		}
+		// if(Input.GetButtonDown(quickItem)){
+		// 	unit.GetComponent<PotionControl>().UsePotion(); //attached potion control to inventory manager instead
+		// }
 
 
 		//fire arrow

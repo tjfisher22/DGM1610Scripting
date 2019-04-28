@@ -10,6 +10,8 @@ public class InventoryManager : MonoBehaviour {
 	//check to see if new item is potion or arrow
 	//add it if so skip if not
 
+
+
 	public Inventory playerInventory;
 	// Use this for initialization
 	void Start () {
@@ -18,6 +20,9 @@ public class InventoryManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Input.GetButtonDown("Inventory")){
+			//open inventory
+		}
 		
 	}
 

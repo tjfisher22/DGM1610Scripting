@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: SelectedPotion
   m_EditorClassIdentifier: 
   description: Curently selected potion
-  collectable: {fileID: 11400000, guid: 184622ee4bd8d5e419538c9f7565e7a1, type: 2}
+  collectable: {fileID: 11400000, guid: 5f83e5bebb4fc62428a1491f5875cae8, type: 2}

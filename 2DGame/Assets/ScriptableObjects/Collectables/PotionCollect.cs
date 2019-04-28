@@ -7,14 +7,16 @@ public class PotionCollect : Collectables {
 	public enum PotionType {Health, Speed, Jump, Strength, Defence}
 	public PotionType potionType;
 	//public Unit player;
-	public float potionDuration;
-	public override float duration{
-		get{
-			return potionDuration;
-		}
-	}
+	public float duration;
+	public int cost;
+	// public float potionDuration;
+	// public override float duration{
+	// 	get{
+	// 		return potionDuration;
+	// 	}
+	// }
 	[Range(1,3)]
-	public int tier;
+	public int tier = 1;
 
 
 
