@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Fire Arrow
   sprite: {fileID: 21300000, guid: a97446bf202f2c44a846b609c4b3c20c, type: 3}
-  amount: 1
+  amount: 3
   playerInventory: {fileID: 11400000, guid: 02c5b850947a0d54995f558bd0287b6b, type: 2}
   type: 1
   color: {r: 0.5660378, g: 0.18668059, b: 0, a: 1}
@@ -21,3 +21,4 @@ MonoBehaviour:
   arrowType: 1
   arrowDamage: 15
   knockBack: 1
+  cost: 0

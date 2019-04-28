@@ -46,7 +46,7 @@ public class InventoryManager : MonoBehaviour {
 		
 	}
 
-	public void addItem(Collectables item, int amount){  //overload this with a list as well
+	public void AddItem(Collectables item, int amount){  //overload this with a list as well
 		if(playerInventory.listValue.Contains(item)){//find if item is in list
 			int inventoryIndex = playerInventory.listValue.FindIndex(x => x.Equals(item));//if so find it's index
 			playerInventory.listValue2[inventoryIndex]+=amount;//and add to it's quantity

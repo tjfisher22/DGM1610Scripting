@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
 	public GameObject playerObj;
 	public Transform respawnPoint;
 	public GameObject inventory;
+	public int startingCoins = 10;
+	public Collectables startingItem;
 
 
 
@@ -17,31 +19,43 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//Scene scene = SceneManager.GetActiveScene();
+		playerHP.listValue[0]=player.maxHealth;
+	}
+	void Update(){
+		
 	}
 	
 	// Update is called once per frame
 	void LateUpdate () {
+		
+	}
+
+	public void RespawnPlayer(){
+		if(playerHP.listValue[0]<=0){
+			playerObj.transform.position = respawnPoint.position;
+			playerHP.listValue[0]=player.maxHealth;
+			ShowPlayer();
+			SceneManager.LoadScene("Game");
+		}
+	}
+	public void HidePlayer(){
+		playerObj.GetComponent<SpriteRenderer>().enabled =false;
+	}
+	public void ShowPlayer(){
+		playerObj.GetComponent<SpriteRenderer>().enabled =true;
+	}
+	public void StartGame(){
+		//for(int i = 0; )
+		//clear inventory
+		inventory.GetComponent<InventoryManager>().playerInventory.listValue.Clear();
+		inventory.GetComponent<InventoryManager>().playerInventory.listValue2.Clear();
+		//give 10 coins 
+		gameObject.GetComponent<GameOverControl>().playerCoins.value = startingCoins;
+		//maybe a few arrows
+		inventory.GetComponent<InventoryManager>().AddItem(startingItem, startingItem.amount);
+		//reset health
+		playerHP.listValue[0]=player.maxHealth;
 		RespawnPlayer();
 	}
 
-	void RespawnPlayer(){
-		if(playerHP.listValue[0]<=0){
-			
-			//gameObject.GetComponent<GameOverControl>().
-			playerObj.transform.position = respawnPoint.position;
-			playerHP.listValue[0]=player.maxHealth;
-			//SceneManager.LoadScene("Game");
-		
-			//StartCoroutine(WaitForRespawn());
-		}
-	}
-	// IEnumerator WaitForRespawn(){
-
-	// 		//yield return new WaitForSeconds(3f);//inventory.GetComponent<PotionControl>()usedPotion.duration);
-	// 		//reload scene?
-	// 		playerObj.transform.position = respawnPoint.position;
-	// 		playerHP.listValue[0]=player.maxHealth;
-	// 		SceneManager.LoadScene("Game");
-		
-	// }
 }

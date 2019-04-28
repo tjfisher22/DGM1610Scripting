@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "New Enemy",menuName="Unit/Dumb Enemy")]
 public class EnemyDumbUnit : Unit {
-	Unit unitType; //why is this here?
+	//Unit unitType; //why is this here?
 	// [Range(0, 10)]
 	// public float idleTime;
 	// [Range(0, 10)]
@@ -12,7 +12,7 @@ public class EnemyDumbUnit : Unit {
 	// public float attackTime;
 	// public enum States {Idle, Walking, Attacking, Jumping};
 	public override void Think(UnitAI unitAI){
-		unitType = unitAI.GetComponent<UnitControl>().unit; 
+		//unitType = unitAI.GetComponent<UnitControl>().unit; 
 		//movement
 		//jumping
 		if(unitAI.FacingUnit()!=UnitAI.NearbyUnitType.Player){

@@ -4,12 +4,12 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Enemy",menuName="Unit/Patrol Enemy")]
 public class EnemyPatrolUnit : Unit {
-	Unit unitType;//I don't think I need this
+	//Unit unitType;//I don't think I need this
 	
 
 	public override void Think(UnitAI unitAI){
 
-		unitType = unitAI.GetComponent<UnitControl>().unit;
+		//unitType = unitAI.GetComponent<UnitControl>().unit;
 		//movement
 		unitAI.GetComponent<UnitControl>().Control(speed, false, false);
 		if(unitAI.GetComponent<UnitControl>().IsEdge(speed)){

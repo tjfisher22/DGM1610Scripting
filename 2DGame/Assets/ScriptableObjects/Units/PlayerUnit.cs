@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Player", menuName = "Unit/Player Unit")]
 public class PlayerUnit : Unit {
-	Unit unitType;
+	//Unit unitType;
 	public int playerNumber;
 	private string movementAxisName;
 	private string jumpAxisName;
@@ -26,7 +26,7 @@ public class PlayerUnit : Unit {
 	}
 
 	public override void Think(UnitAI unit){
-		unitType = unit.GetComponent<UnitControl>().unit; 
+		//unitType = unit.GetComponent<UnitControl>().unit; 
 
 		//movement
 		unit.GetComponent<UnitControl>().Control(Input.GetAxis(movementAxisName),false /*Input.GetButton(sneakButton) */,Input.GetButton(sprintButton)); //removing sneak since animation is not in and there isn't a purpose for it currently
