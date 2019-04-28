@@ -7,7 +7,7 @@ public abstract class Collectables : ScriptableObject {
 
 	public string name = "New Collectable";
 	public Sprite sprite;
-	public int amount;
+	public int amount = 1;
 	public Inventory playerInventory;
 	//move to coinsSO
 	//public int cValue;
@@ -19,5 +19,6 @@ public abstract class Collectables : ScriptableObject {
 	//public virtual void Initialize(UnitAI unit){}
 	// public abstract void Spawn(CollectableAI Collect);
 	public abstract void Collect(CollectableAI pickUp);
+	public virtual float duration{get;}
 
 }

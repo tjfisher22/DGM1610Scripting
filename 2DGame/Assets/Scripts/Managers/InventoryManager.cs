@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour {
+	//shouldl probably make an instance of this
+	//list potions
+	//list arrows
+	//list length of each checked until new length is longer
+	//check to see if new item is potion or arrow
+	//add it if so skip if not
 
 	public Inventory playerInventory;
 	// Use this for initialization
@@ -32,6 +38,10 @@ public class InventoryManager : MonoBehaviour {
 	}
 
 	public void moveItem(){
+
+	}
+
+	public void useItem(){
 
 	}
 }

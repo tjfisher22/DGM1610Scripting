@@ -11,6 +11,7 @@ public class ArrowControl : MonoBehaviour {
 		arrowSprite.sprite = arrow.sprite;
 		arrowSprite.color = arrow.color;
 		arrowSprite.sortingOrder = 100;
+		//change color of particle effect here
 	}
 
 	void OnCollisionEnter2D(Collision2D other){

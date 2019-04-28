@@ -103,7 +103,7 @@ public class CollectableControl : MonoBehaviour {
 	public void AddItem(Collectables item, int amount){
 		if(playerInventory.listValue.Contains(item)){//find if item is in list
 			int inventoryIndex = playerInventory.listValue.FindIndex(x => x.Equals(item));//if so find it's index
-			Debug.Log("index " + inventoryIndex + "Amount "+amount);
+			//Debug.Log("index " + inventoryIndex + "Amount "+amount);
 			playerInventory.listValue2[inventoryIndex]+=amount;//and add to it's quantity
 		}
 		else{//if not 
