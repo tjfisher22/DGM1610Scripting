@@ -32,6 +32,8 @@ public class UnitControl : MonoBehaviour {
 	//float knockbackTime = 1.5f; //add this to unit data
 	[HideInInspector]
 	public bool nearEdge;
+	[HideInInspector]
+	public float distance = 2f;
 
 
 	private Animator unitAnim;
@@ -149,7 +151,7 @@ public class UnitControl : MonoBehaviour {
 
 	bool IsGrounded() {
     	Vector2 position = transform.position;
-		float distance = 2f;
+		
     	Vector2 direction = new Vector2(0,-1*distance);
     	
     

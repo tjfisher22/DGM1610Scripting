@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 703575b4e0b9cb0498866af246b60c31, type: 3}
+  m_Name: BossRates
+  m_EditorClassIdentifier: 
+  description: Drops for Bosses
+  value: 0
+  listValue:
+  - {fileID: 11400000, guid: d9e34cafbf153a949894b6de35aa0eb6, type: 2}
+  - {fileID: 11400000, guid: 184622ee4bd8d5e419538c9f7565e7a1, type: 2}
+  - {fileID: 11400000, guid: c327d7f344a0b1c4ab79141dae04f56e, type: 2}
+  - {fileID: 11400000, guid: 3ed194609739dc645a9912636682d756, type: 2}
+  listValue2:
+  - 2
+  - 0.8
+  - 3.5
+  - 2.5

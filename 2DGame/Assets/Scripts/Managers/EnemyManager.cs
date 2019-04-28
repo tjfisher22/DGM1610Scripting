@@ -8,6 +8,7 @@ public class EnemyManager : MonoBehaviour {
 	public FloatListVariable enemyHPs;
 	public UnitListVariable enemyTypes;
 	public Transform enemyPrefab;
+	public Transform bossPrefab;
 	public Transform collectPrefab;
 	
 	//private CollectListVariable allDrops;
@@ -69,6 +70,14 @@ public class EnemyManager : MonoBehaviour {
 			obj.GetComponent<UnitControl>().unitID = enemyNumber;
 			objList.Add(obj);
 			enemyNumber++;
+	}
+	public void SpawnBoss(Vector2 position){
+		GameObject obj;
+		obj = Instantiate(bossPrefab, position, Quaternion.identity).gameObject;
+		enemyHPs.listValue.Add(bossPrefab.gameObject.GetComponent<UnitControl>().unit.maxHealth);
+		obj.GetComponent<UnitControl>().unitID = enemyNumber;
+		objList.Add(obj);
+		enemyNumber++;
 	}
 
 	//Should probably move spawn enemy to seperate class for

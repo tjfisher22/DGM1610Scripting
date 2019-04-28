@@ -9,8 +9,11 @@ public class PlatformManager : MonoBehaviour {
 	public float enemySpawnChance = .5f; //SO might be better for development
 
     public int maxPlatforms = 20;
+	public GameObject player;
     public GameObject platform;
 	public GameObject death;
+	public GameObject bossPlatform;
+	public GameObject bossDeath;
     public float horizontalMin = 7.5f;
     public float horizontalMax = 14f;
     public float verticalMin = -6f;
@@ -20,6 +23,10 @@ public class PlatformManager : MonoBehaviour {
 
 	private Vector2 originPosition;
 
+	private Vector2 bossPosition;
+
+	private GameObject[] platforms;
+
 	// Use this for initialization
 	void Start () {
 		originPosition = transform.position;
@@ -28,6 +35,7 @@ public class PlatformManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if()
 	}
 
 	void Spawn(){
@@ -40,5 +48,11 @@ public class PlatformManager : MonoBehaviour {
 				enemyMng.GetComponent<EnemyManager>().SpawnEnemy(new Vector2(originPosition.x+Random.Range(-3,3),originPosition.y+Random.Range(3,6)));
 			}
         }
+		 randomPosition = originPosition + new Vector2 (Random.Range(horizontalMin, horizontalMax)+20, Random.Range (verticalMin, verticalMax));
+            Instantiate(bossPlatform, randomPosition, Quaternion.identity);
+			Instantiate(bossDeath, new Vector2(randomPosition.x+20,death.transform.position.y),Quaternion.identity);
+            originPosition = randomPosition+new Vector2(20,0);
+			bossPosition = new Vector2(originPosition.x+Random.Range(-3,3),originPosition.y+Random.Range(3,6))
+			enemyMng.GetComponent<EnemyManager>().SpawnBoss(bossPosition);
 	}
 }

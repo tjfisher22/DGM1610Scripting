@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca2e7ab8709ec643853f5184363feae, type: 3}
   m_Name: Big Sword
   m_EditorClassIdentifier: 
-  weaponName: New Weapon
-  sprite: {fileID: 0}
+  weaponName: Big Sword
+  sprite: {fileID: 21300000, guid: ab59917f71f87604ab593586708246c0, type: 3}
   color: {r: 0, g: 0, b: 0, a: 1}
   damage: 25
-  attackCooldown: 15
-  knockBack: 0
+  attackCooldown: 7
+  knockBack: 2

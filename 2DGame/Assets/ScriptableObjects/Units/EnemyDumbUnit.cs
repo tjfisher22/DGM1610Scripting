@@ -17,7 +17,8 @@ public class EnemyDumbUnit : Unit {
 		//jumping
 		if(unitAI.FacingUnit()!=UnitAI.NearbyUnitType.Player){
 			if(unitAI.FacingUnit()==UnitAI.NearbyUnitType.Enemy){
-				unitAI.GetComponent<UnitControl>().Jump();
+				unitAI.GetComponent<UnitControl>().unitDirMod *= -1;
+				//unitAI.GetComponent<UnitControl>().Jump();
 			}
 			if(unitAI.GetComponent<UnitControl>().IsEdge(speed)){
 				unitAI.GetComponent<UnitControl>().Jump();

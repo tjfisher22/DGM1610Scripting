@@ -45,7 +45,7 @@ public class GameOverControl : MonoBehaviour {
 		}
 	}
 	public void Contine(){
-		if(playerCoins.value>coinsRequired.value;){
+		if(playerCoins.value>coinsRequired.value){
 			Time.timeScale = 1;
 			gameObject.GetComponent<GameManager>().RespawnPlayer();
 			playerCoins.value -= coinsRequired.value;
