@@ -294,7 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 11400000, guid: cd4c1254ea0b16b4b8592603191e2f77, type: 2}
   unitID: 0
-  unitDirMod: 1
+  unitDirMod: -1
   currentHP: {fileID: 11400000, guid: f6d7c65932946754cb569a165fe4c637, type: 2}
   collectsToDrop: {fileID: 11400000, guid: 68b2183375d2ec44db3403eb1c1e745c, type: 2}
   knockbackXMod: 1

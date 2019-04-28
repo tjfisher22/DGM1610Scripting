@@ -58,7 +58,12 @@ public class EnemyManager : MonoBehaviour {
 			obj.GetComponent<UnitAI>().unit = enemyTypes.listValue[enemyChoice];
 			//obj.GetComponent<MeleeControl>().unit = enemyTypes.listValue[enemyChoice];
 			obj.GetComponent<MeleeAttacks>().attacker = enemyTypes.listValue[enemyChoice];
-			//Debug.Log(obj);
+			
+			GameObject child;
+			child = obj.transform.GetChild(2).gameObject;
+			//Debug.Log("child " + child.name);
+			child.GetComponent<MeleeControl>().unit = enemyTypes.listValue[enemyChoice];
+
 			enemyHPs.listValue.Add(enemyPrefab.gameObject.GetComponent<UnitControl>().unit.maxHealth);
 			//Debug.Log((enemyPrefab.gameObject.GetComponent<UnitControl>().unit.maxHealth));
 			obj.GetComponent<UnitControl>().unitID = enemyNumber;
