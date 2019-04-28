@@ -17,10 +17,10 @@ MonoBehaviour:
   strength: 10
   defense: 0
   hostile: 0
-  speed: 3
+  speed: -3
   sprintModifier: 2
   sneakModifier: 0.5
   jumpHeight: 20
   unitSprite: {fileID: 0}
   unitColor: {r: 1, g: 0, b: 0, a: 1}
-  collectsToDrop: {fileID: 11400000, guid: 1a1ab8b257265174faffc4c0a257c2a6, type: 2}
+  collectsToDrop: {fileID: 11400000, guid: c9e07d8e5201a9f4b90358ab4341ff0e, type: 2}

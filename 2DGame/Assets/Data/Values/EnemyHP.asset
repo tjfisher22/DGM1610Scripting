@@ -14,10 +14,12 @@ MonoBehaviour:
   description: List of Enemy HPs
   value: 0
   listValue:
-  - 0
-  - 0
-  - 0
-  - 0
+  - 25
+  - 25
+  - 25
+  - 25
+  - 25
+  - 25
   - 25
   - 25
   - 25
