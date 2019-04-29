@@ -5,7 +5,6 @@ using UnityEngine;
 public class MeleeAttacks : MonoBehaviour {
  	public Weapon weapon; 
 	public Unit attacker;
-	public FloatListVariable playerCooldown;
 
 	public float timeToAttack;
 	public float attackCooldown;
@@ -25,8 +24,7 @@ public class MeleeAttacks : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		playerCooldown.value = weapon.attackCooldown;
-		playerCooldown.listValue[0] = weapon.attackCooldown;
+
 	}
 	
 	// Update is called once per frame
@@ -61,17 +59,10 @@ public class MeleeAttacks : MonoBehaviour {
 
 	private IEnumerator Cooldown(){
 		onCooldown = true;
-		float timeRemaining =weapon.attackCooldown; 
-		while(timeRemaining>0){
-			playerCooldown.listValue[0] = timeRemaining;
-			timeRemaining -= Time.deltaTime;
-			yield return null;
-		}
-				
-		// yield return new WaitForSeconds(weapon.attackCooldown);
+
+		yield return new WaitForSeconds(weapon.attackCooldown);
 
 		onCooldown = false;
-		playerCooldown.listValue[0] = weapon.attackCooldown;
 	}
 	
 

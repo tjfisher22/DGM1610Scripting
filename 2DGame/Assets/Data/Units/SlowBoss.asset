@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Slow Boss
   enemyTag: Player
-  maxHealth: 50
+  maxHealth: 100
   strength: 25
   defense: 10
   hostile: 1
