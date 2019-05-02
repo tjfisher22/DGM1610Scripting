@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
 // [System.Serializable]
 //Should probably just convert the 2d list into a dictionary instead
+
+//similar in functionality to FloatVariable.
+//This, however is used more as a parent class for mutliple types of Scriptable Object Variable Lists.
 public  class ListVariable<T,Y> : ScriptableObject { //need to add a plus button for quicker list lenghtening in the editor
 
 	public string description;

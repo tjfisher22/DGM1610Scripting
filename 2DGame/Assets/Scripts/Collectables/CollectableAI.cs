@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class CollectableAI : MonoBehaviour {
 
+	//Base control for Collectables
 	public Collectables pickUp;
 	[HideInInspector]
 	public int pickUpID;
 	[HideInInspector]
 	public CollectListVariable possiblePickUps;
-	// Use this for initialization
+	
 	void Start () {
+		//pickUpID is given a value from the spawn manager. This class then matches this with the possiblePickUps list to determine what pickUp it should be.
 		pickUp = possiblePickUps.listValue[pickUpID];
 	}
 	
-	// Update is called once per frame
+	
 	void Update () {
+		//call to relavant Scriptable Object class
 		pickUp.Collect(this);
-
 	}
 
 }

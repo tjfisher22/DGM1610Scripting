@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class EndMenuControl : MonoBehaviour {
+	//Control for the final scene
 	public StringListVariable highscores;
 	public FloatVariable playerCoins;
 	public Text congrats;

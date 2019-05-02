@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Weapon/Weapon")]
+//base weapon Scriptable Object. Used to create new weapon values
 public class Weapon : ScriptableObject {
 
 	public string weaponName = "New Weapon";

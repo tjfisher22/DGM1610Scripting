@@ -6,11 +6,10 @@ using UnityEngine;
 public class PotionCollect : Collectables {
 	public enum PotionType {Health, Speed, Jump, Strength, Defense}
 	public PotionType potionType;
-	//public Unit player;
 	public float duration;
 	public int cost;
 	public bool isPoison;
-	// public float potionDuration;
+	// public float potionDuration; // this wasn't needed in the end
 	// public override float duration{
 	// 	get{
 	// 		return potionDuration;
@@ -24,6 +23,7 @@ public class PotionCollect : Collectables {
 
 
 	public override void Collect(CollectableAI pickUp){
+			//Collect is run in potionAI Update
 			pickUp.GetComponent<CollectableControl>().CollectValues(amount);
 			pickUp.GetComponent<CollectableControl>().PickUpCollect(playerInventory);
 	}

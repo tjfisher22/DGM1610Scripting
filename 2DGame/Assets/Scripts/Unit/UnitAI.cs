@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitAI : MonoBehaviour {
+	//AI Control for units. calls scriptable object associated
 	public enum NearbyUnitType {None, Enemy, Player};
 
 	public Unit unit;

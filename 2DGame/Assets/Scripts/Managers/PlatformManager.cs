@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlatformManager : MonoBehaviour {
 
+	//controls platform spawning
+
 	public GameObject enemyMng;
 	[Range(0.0f,1.0f)]
 	public float enemySpawnChance = .5f; //SO might be better for development
@@ -36,8 +38,8 @@ public class PlatformManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		if(bossPosition.x - player.transform.position.x < 10){//should probably move this to another function to keep my code cleaner but it should be fine here for this project
-			// platforms = GameObject.FindGameObjectsWithTag("Platform");
+		if(bossPosition.x - player.transform.position.x < 10){//once the player gets close enough to the boss, spawns more platforms
+			// platforms = GameObject.FindGameObjectsWithTag("Platform"); //should delete platforms behind player once close enough to boss
 			// foreach(GameObject obj in platforms){
 			// 	Destroy(obj);
 			// }

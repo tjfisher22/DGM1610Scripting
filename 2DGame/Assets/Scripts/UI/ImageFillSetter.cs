@@ -2,6 +2,7 @@
 using UnityEngine;
 
 public class ImageFillSetter : MonoBehaviour {
+	//used across various scripts to create sliding bars
 	public FloatListVariable variable;
 
 

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour {
+	//manages given inventory
+
+
 	//shouldl probably make an instance of this
 	//list potions
 	//list arrows
@@ -76,11 +79,11 @@ public class InventoryManager : MonoBehaviour {
 		selectedPotion.collectable = inventoryPotions[potIndex];
 
 	}
-	public void removeItem(){
+	public void removeItem(){ //for later UI control
 
 	}
 
-	public void moveItem(){
+	public void moveItem(){ //for later UI control
 
 	}
 

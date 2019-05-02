@@ -7,13 +7,8 @@ public class CoinCollect : Collectables {
 	public int coinValue;
 	public FloatVariable playerCoins;
 
-
-
-	// Put spawning in collectableManager
-	// public override void Spawn(CollectableAI Collect){
-
-	// }
 	public override void Collect(CollectableAI pickUp){
+			//Collect is run in CoinAI Update
 			pickUp.GetComponent<CollectableControl>().CollectValues(coinValue*amount);
 			pickUp.GetComponent<CollectableControl>().PickUpCollect(playerCoins);
 			//put collectable specific stuff here

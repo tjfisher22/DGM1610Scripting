@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Collectables : ScriptableObject {
-	public enum CollectableType {Coin, Arrow, PowerUp, Potion};//not readily expandable //Scriptable object would be better but required for the assignment
+	//abstract scriptable object for all pickups.
+	//General info here with specifics implemented in each base class
+	public enum CollectableType {Coin, Arrow, PowerUp, Potion};
 
 	public string name = "New Collectable";
 	public Sprite sprite;
@@ -13,7 +15,6 @@ public abstract class Collectables : ScriptableObject {
 	public CollectableType type;
 	public Color color = Color.black;
 	public RuntimeAnimatorController animControl;
-	//private bool pickedUp;
 
 	//public virtual void Initialize(UnitAI unit){}
 	// public abstract void Spawn(CollectableAI Collect);
