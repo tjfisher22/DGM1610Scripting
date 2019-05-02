@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PotionControl : MonoBehaviour {
+	//controller for potions
 	
 	//public PotionCollect potion;
 	public Unit player;
@@ -21,12 +22,6 @@ public class PotionControl : MonoBehaviour {
 
 	void Start(){
 		effectBar.gameObject.SetActive(false);
-		// potionSprite = gameObject.GetComponent<SpriteRenderer> ();
-		// potionSprite.sprite = potion.sprite;
-		// potionSprite.color = potion.color;
-		// potionSprite.sortingOrder = 100;
-
-		
 	}
 	// Update is called once per frame
 	void Update () {
@@ -41,8 +36,6 @@ public class PotionControl : MonoBehaviour {
 		}
 		if(playerInventory.listValue.Contains(usedPotion)&&!potionInUse){
 			int inventoryIndex = playerInventory.listValue.FindIndex(x => x.Equals(usedPotion));
-			//Debug.Log("index " + inventoryIndex + "Amount "+amount);
-			//turn bar background on
 			playerInventory.listValue2[inventoryIndex]--;
 			StartCoroutine(PotionEffect());
 		}
@@ -51,6 +44,9 @@ public class PotionControl : MonoBehaviour {
 		}
 	}
 	IEnumerator PotionEffect(){
+		//applies the potion power up to the player based on selected potion
+		//also controls cooldown
+
 		potionInUse = true;
 		effectBar.gameObject.SetActive(true);
 		effectBar.GetChild(0).gameObject.GetComponent<Image>().color = usedPotion.color;
@@ -98,7 +94,6 @@ public class PotionControl : MonoBehaviour {
 			}
 			yield return null;
 		}
-		// yield return new WaitForSeconds(selectedPotion.collectable.duration);
 		//reset potion effect
 		switch(usedPotion.potionType){
 			case PotionCollect.PotionType.Speed:
@@ -118,10 +113,5 @@ public class PotionControl : MonoBehaviour {
 		potionInUse = false;
 		effectBar.gameObject.SetActive(false);
 		priorValue = 0;
-
-	}
-
-	public void scrollPotions(){ //maybe put in inventory manager
-
 	}
 }

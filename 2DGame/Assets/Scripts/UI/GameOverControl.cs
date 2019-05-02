@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameOverControl : MonoBehaviour {
+	//detect when player dies
+
 	GameObject[] deathObjects;
 	public Text continueCoins;
 	public FloatVariable coinsRequired;

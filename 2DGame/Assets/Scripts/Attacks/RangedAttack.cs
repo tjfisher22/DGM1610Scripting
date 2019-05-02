@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RangedAttack : MonoBehaviour {
+	//Ranged attack control
+	//not currently implemented
 	public Unit unit;
 	public Bow bow;
 	public Transform arrow;
@@ -36,7 +38,7 @@ public class RangedAttack : MonoBehaviour {
 		while (Input.GetButton("Fire1")){
 			if(chargeTime<bow.timeToFull*4)chargeTime++;
 			else chargeTime = bow.timeToFull*4;
-//use multiple states for bow animation
+		//use multiple states for bow animation
 			yield return new WaitForSeconds(.25f);
 		}
 

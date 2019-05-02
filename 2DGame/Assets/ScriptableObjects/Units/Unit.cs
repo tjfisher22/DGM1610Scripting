@@ -4,12 +4,11 @@ using UnityEngine;
 
 
 public abstract class Unit : ScriptableObject {
+	//abstract scriptable object for all units. (player and enemy)
+	//General info here with specifics and controls implemented in each base class
 
 	//public virtual void Initialize(UnitAI unit){}
 	public abstract void Think(UnitAI unit);
-	
-
-
 
 	public new string name;
 	public string enemyTag;
@@ -31,5 +30,5 @@ public abstract class Unit : ScriptableObject {
 	public Color unitColor = Color.black;
 
 	public CollectListVariable collectsToDrop;
-	//figure out if you can save animator controllers to SOs
+
 }

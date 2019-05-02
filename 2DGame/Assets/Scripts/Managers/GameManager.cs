@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
+	//Controls scense and handles player death
 
 	public Unit player;
 	public FloatListVariable playerHP;
@@ -13,17 +14,13 @@ public class GameManager : MonoBehaviour {
 	public int startingCoins = 10;
 	public Collectables startingItem;
 
-
-
-
-	// Use this for initialization
 	void Start () {
 		//Scene scene = SceneManager.GetActiveScene();
 		playerHP.listValue[0]=player.maxHealth;
 		inventory.GetComponent<InventoryManager>().playerInventory.listValue.Clear();
 		inventory.GetComponent<InventoryManager>().playerInventory.listValue2.Clear();
 		//give 10 coins 
-		gameObject.GetComponent<GameOverControl>().playerCoins.value = startingCoins;
+		//gameObject.GetComponent<GameOverControl>().playerCoins.value = startingCoins; //Currently doesn't have intended effect. removed for now
 		//maybe a few arrows
 		inventory.GetComponent<InventoryManager>().AddItem(startingItem, startingItem.amount);
 		//reset health
@@ -40,11 +37,6 @@ public class GameManager : MonoBehaviour {
 		
 	}
 	
-	// Update is called once per frame
-	void LateUpdate () {
-		
-	}
-
 	public void RespawnPlayer(){
 			playerObj.transform.position = respawnPoint.position;
 			playerHP.listValue[0]=player.maxHealth;

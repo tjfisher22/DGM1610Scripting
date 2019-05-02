@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MeleeAttacks : MonoBehaviour {
+	//Control for attacking from melee range
+
  	public Weapon weapon; 
 	public Unit attacker;
 	public FloatListVariable playerCooldown;
@@ -23,24 +25,23 @@ public class MeleeAttacks : MonoBehaviour {
 	[HideInInspector]
 	public Vector2 position;
 
-	// Use this for initialization
 	void Start () {
 		playerCooldown.value = weapon.attackCooldown;
 		playerCooldown.listValue[0] = weapon.attackCooldown;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 	}
+
 	public void MeleeAttackAnimation(){
 		if(!onCooldown){
 		attackerAnim = gameObject.GetComponent<Animator>();
-		attackerAnim.SetTrigger("slash");
+		attackerAnim.SetTrigger("slash"); //can be used in combination with scriptable object to change trigger for each. Thereby letting the player have different animations with different weapons
 		StartCoroutine(Cooldown());
 		}
 	}
 	public void MeleeAttack(){
-		//unused
+		//unused  //Damage is calculated via ontrigger enter in MeleeControl
 
 		// if(!onCooldown){
 		// 		//attackerAnim = gameObject.GetComponent<Animator>();

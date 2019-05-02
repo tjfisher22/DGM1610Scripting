@@ -10,20 +10,10 @@ public class ArrowCollect : Collectables {
 	public float knockBack;
 	public int cost;
 
-	//type = Collectables.CollectableType.Arrow;
-
 	public override void Collect(CollectableAI pickUp){
+			//Collect is run in arrowAI Update
 			pickUp.GetComponent<CollectableControl>().CollectValues(amount);
 			pickUp.GetComponent<CollectableControl>().PickUpCollect(playerInventory);
-
-			//put collectable specific stuff here
-			//Like add powerups, add to score.
-			//They will functions to call from CollectableControl I believe
-			//Nah, just pass important values into Collect()
-			//Or is that too much info for the class
-			//Keep it here if possible
-			//NOPE
-			//Send the important stuff 
 
 	}
 }

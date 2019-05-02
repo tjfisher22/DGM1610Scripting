@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Player", menuName = "Unit/Player Unit")]
 public class PlayerUnit : Unit {
-	//Unit unitType;
+	//Controls for the player charater
 	public int playerNumber;
 	private string movementAxisName;
 	private string jumpAxisName;
@@ -26,7 +26,7 @@ public class PlayerUnit : Unit {
 	}
 
 	public override void Think(UnitAI unit){
-		//unitType = unit.GetComponent<UnitControl>().unit; 
+		//Think is called from UnitAI
 
 		//movement
 		unit.GetComponent<UnitControl>().Control(Input.GetAxis(movementAxisName),false /*Input.GetButton(sneakButton) */,Input.GetButton(sprintButton)); //removing sneak since animation is not in and there isn't a purpose for it currently
@@ -44,14 +44,10 @@ public class PlayerUnit : Unit {
 
 		//potion usage
 		// if(Input.GetButtonDown(quickItem)){
-		// 	unit.GetComponent<PotionControl>().UsePotion(); //attached potion control to inventory manager instead
+		// 	unit.GetComponent<PotionControl>().UsePotion(); //attached potion control to inventory manager instead but should move back for player modularity in the future. Potentially called from shared inventory scriptable object?
 		// }
 
-
 		//fire arrow
-
-
-		
 	}
 
 

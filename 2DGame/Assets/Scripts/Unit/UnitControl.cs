@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class UnitControl : MonoBehaviour {
 
+	//Controls for all the units called from UnitAI's scriptable object
+
 	public Unit unit;
 	public int unitID;
-	//[HideInInspector]
+	[HideInInspector]
 	public int unitDirMod = 1;
 
 	public FloatListVariable currentHP;
@@ -15,9 +17,6 @@ public class UnitControl : MonoBehaviour {
 	public float knockbackYMod = 1;
 	public float knockbackTimeMod = 1;
 
-	//public int currentHealth;
-	
-	//float jumpHeight;
 	float speed;
 	float sneakMod;
 	float sprintMod;
@@ -29,7 +28,6 @@ public class UnitControl : MonoBehaviour {
 	bool sprintInput;
 
 	bool inKnockback;
-	//float knockbackTime = 1.5f; //add this to unit data
 	[HideInInspector]
 	public bool nearEdge;
 	[HideInInspector]
@@ -65,7 +63,7 @@ public class UnitControl : MonoBehaviour {
 	}
 
 	public bool IsEdge(float speed){
-		//use speed to modify sphere radius
+		//use speed to modify sphere radius in the future.
 		Collider2D[] platformColliders = Physics2D.OverlapCircleAll(edgeCheck.position, .5f, groundLayer);
 		if(platformColliders.Length == 0){
 			return true;
@@ -78,11 +76,9 @@ public class UnitControl : MonoBehaviour {
 		if(currentHP!= null){
 			float dmg = damage;
 			currentHP.listValue[unitID] -= ((dmg>unit.defense) ? dmg-unit.defense:0);
-			//Debug.Log(unit.name + "Took Damage");
 			StartCoroutine(Knockback(dir,kbStr));
 			if(currentHP.listValue[unitID] <=0){
 				currentHP.listValue[unitID] = 0;
-				// Debug.Log(unit.name+" Died");
 				// this.gameObject.SetActive(false);
 			}
 		}
@@ -135,12 +131,9 @@ public class UnitControl : MonoBehaviour {
 		float jump = unit.jumpHeight;
 			if(IsFalling()){return;}
 			unitBody.velocity = new Vector2(unitBody.velocity.x,jump);
-			//play jump animation here
-			//unitAnim.Play("Jump");
+}
 
-	}
-
-	public IEnumerator Knockback(float kbDir, float kbStr){
+	public IEnumerator Knockback(float kbDir, float kbStr){ //apply knocback to player
 		inKnockback = true;
 		Debug.Log("KnockBack");
 		//gameObject.transform.localScale = new Vector2(-kbDir,transform.localScale.y);
@@ -150,11 +143,8 @@ public class UnitControl : MonoBehaviour {
 	}
 
 	bool IsGrounded() {
-    	Vector2 position = transform.position;
-		
+    	Vector2 position = transform.position;	
     	Vector2 direction = new Vector2(0,-1*distance);
-    	
-    
         Debug.DrawRay(position, direction, Color.green);
 		//Apparently raycasting is bad for optimization, probably should change it to a child gameobject
 		RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer); 
@@ -165,18 +155,16 @@ public class UnitControl : MonoBehaviour {
     return false;
 	}
 
-	public bool IsFalling() {
+	public bool IsFalling() { // for animation control
 		if(IsGrounded()) {
 			//add falling animation here
 			//unitAnim.SetLayerWeight (unitAnim.GetLayerIndex ("Air Movement"), 0);
 			unitAnim.SetBool("falling", false);
-			//Debug.Log("Not Falling");
 			return false;
 		}
 		else {
 			//unitAnim.SetLayerWeight (unitAnim.GetLayerIndex ("Air Movement"), 2);
 			unitAnim.SetBool("falling", true);
-			//Debug.Log("Falling");
 			return true;
 		}
 	}
@@ -188,7 +176,6 @@ public class UnitControl : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other){
-		//Debug.Log(other.gameObject.layer);
 		if(other.gameObject.layer==LayerMask.NameToLayer("Death")){
 			currentHP.listValue[unitID] = 0;
 		}

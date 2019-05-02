@@ -4,6 +4,9 @@ using UnityEngine;
 // using System.Linq;
 
 public class EnemyManager : MonoBehaviour {
+	//manages all the enemies placed in the scene
+	//keeps track of their health and kills them when 0
+	//Also controls the spawning of enemies
 
 	public FloatListVariable enemyHPs;
 	public UnitListVariable enemyTypes;
@@ -36,6 +39,7 @@ public class EnemyManager : MonoBehaviour {
 	}
 
 	public void SpawnEnemy (Vector2 position) {
+		//compares RNG to enemy spawn chance stored in enemies data object to decide if enemy should spawn
 		// if(Input.GetButtonDown("Jump")){
 			GameObject obj;
 			float rngSum = 0;
@@ -62,16 +66,15 @@ public class EnemyManager : MonoBehaviour {
 			
 			GameObject child;
 			child = obj.transform.GetChild(2).gameObject;
-			//Debug.Log("child " + child.name);
-			child.GetComponent<MeleeControl>().unit = enemyTypes.listValue[enemyChoice];
-
-			enemyHPs.listValue.Add(enemyPrefab.gameObject.GetComponent<UnitControl>().unit.maxHealth);
-			//Debug.Log((enemyPrefab.gameObject.GetComponent<UnitControl>().unit.maxHealth));
+			child.GetComponent<MeleeControl>().unit = enemyTypes.listValue[enemyChoice];//assign enemy to weapon script 
+			//adds a new float variable for each enemy spawned
+			enemyHPs.listValue.Add(enemyPrefab.gameObject.GetComponent<UnitControl>().unit.maxHealth); 
 			obj.GetComponent<UnitControl>().unitID = enemyNumber;
 			objList.Add(obj);
 			enemyNumber++;
 	}
 	public void SpawnBoss(Vector2 position){
+		//special control for boss spawns
 		GameObject obj;
 		obj = Instantiate(bossPrefab, position, Quaternion.identity).gameObject;
 		enemyHPs.listValue.Add(bossPrefab.gameObject.GetComponent<UnitControl>().unit.maxHealth);
@@ -83,6 +86,7 @@ public class EnemyManager : MonoBehaviour {
 	//Should probably move spawn enemy to seperate class for
 	//code management but it'll be small enough for this project
 	void DropCollectables (GameObject enemy) {
+		//scans enemy HP list for dead enemies. Deletes them and drops collectables based on what their individual spawn rates are.
 		Transform pickUp;
 		bool spawning = true;
 		int spawnCount = 0;
@@ -92,8 +96,6 @@ public class EnemyManager : MonoBehaviour {
 		for(int i = 0; i<drops.listValue.Count; i++){
 			while(spawning){
 				rng = Random.Range(0.0f,1.0f);
-				//Debug.Log(drops.listValue[i] + "Random num:" + rng + "Chance" + (drops.listValue2[i]-spawnCount));
-				
 				if(rng<drops.listValue2[i]-spawnCount){
 					spawnPoint = new Vector2(enemy.transform.position.x+rng, enemy.transform.position.y+rng);
 					pickUp = Instantiate(collectPrefab, spawnPoint, enemy.transform.rotation);
